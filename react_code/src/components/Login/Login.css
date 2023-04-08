@@ -1,0 +1,28 @@
+.topnav1 {
+  margin-left: 75%;
+}
+
+.topnav1 a {
+  float: inline-end;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.topnav1 a:hover {
+  background-color: rgb(198, 224, 240);
+  color: green;
+  font-size: 22px;
+}
+
+.card {
+  margin-top: 150px;
+  margin-left: 600px; /* Added */
+  float: inline-end; /* Added */ /* Added */
+  display: flex;
+  border-radius: 15px;
+  height: 700px;
+}
