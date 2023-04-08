@@ -12,7 +12,7 @@ const Login = () => {
   async function submitHandler(event) {
     event.preventDefault();
     const user = {
-      emailId: emailRef.current.value,
+      email: emailRef.current.value,
       password: passwordRef.current.value,
     };
 
@@ -25,7 +25,7 @@ const Login = () => {
     });
 
     if (response.ok) {
-      navigate("/transactions");
+      navigate("/");
     } else {
       setError(true);
     }
@@ -63,7 +63,7 @@ const Login = () => {
             <input
               type="text"
               id="email"
-              name="username"
+              name="email"
               className="form-control"
               placeholder="E-mail"
               required={true}
@@ -91,7 +91,7 @@ const Login = () => {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="submit" className="btn btn-primary">
-              Login
+              Submit
             </button>
           </form>
         </div>
