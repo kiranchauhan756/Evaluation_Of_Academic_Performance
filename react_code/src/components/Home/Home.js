@@ -3,7 +3,7 @@ import "./Home.css";
 import styled from "styled-components";
 import Bg from "../../assets/images/Bg.png";
 import "../../App.css";
-import Ellipse from "../../assets/images/Ellipse.png";
+//import Ellipse from "../../assets/images/Ellipse.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -55,20 +55,6 @@ const BoldText = styled.b`
   color: #585858;
 `;
 const RightSubtitle = styled.div``;
-
-const Image = styled.img`
-  position: absolute;
-  bottom: -151px;
-  left: -6px;
-  width: 31%;
-}
-`;
-const ImageTwo = styled.img`
-  position: absolute;
-  bottom: -152px;
-  left: -74px;
-  width: 33%;
-`;
 
 const Home = () => {
   const emailRef = useRef("");
@@ -122,17 +108,17 @@ const Home = () => {
           <LoginLeft>
             <LoginLeftContents>
               <Title>Academic Evaluation System</Title>
-              <Subtitle>A helping tool for both student and faculties</Subtitle>
+              <Subtitle>
+                A helping tool for both student and faculties📝📝
+              </Subtitle>
               <LeftButton>ReadMore</LeftButton>
-              <Image src={Ellipse} />
-              <ImageTwo src={Ellipse} />
             </LoginLeftContents>
           </LoginLeft>
           <LoginRight>
             <LoginContents>
               <RIghtTitle>🧑🏻‍🏫</RIghtTitle>
               <BoldText>Hello👋👋 Welcome back!</BoldText>
-              <RightSubtitle>Login to get started</RightSubtitle>
+              <RightSubtitle>Login to get started📝📝</RightSubtitle>
               <br />
               <form onSubmit={submitHandler}>
                 <input
