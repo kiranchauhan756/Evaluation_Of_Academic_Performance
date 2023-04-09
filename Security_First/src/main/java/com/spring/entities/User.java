@@ -1,18 +1,23 @@
 package com.spring.entities;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class User {
 	
-	//@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	//@Column(name="EMAIL",nullable=false)
+	@Column(name="EMAIL",nullable=false)
 	private String email;
 	
-	//@Column(name="NAME",nullable=false)
+	@Column(name="NAME",nullable=false)
 	private String name;
 	
-	//@Column(name="PASSWORD",nullable=false)
+	@Column(name="PASSWORD",nullable=false)
 	private String password;
 
 	public int getId() {

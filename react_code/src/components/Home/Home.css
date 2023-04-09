@@ -1,43 +1,35 @@
-.bg-img {
-  /* The image used */
-  background-color: pink;
-
-  height: 935px;
-
-  /* Center and scale the image nicely */
-
+input[type="email"],
+select {
+  background: url("../../assets/images/message1.png");
+  border: 0.5px solid black;
+  padding: 16px 45px;
+  margin-bottom: 20px;
+  border-radius: 8px;
   background-repeat: no-repeat;
-  background-size: cover;
-
-  /* Needed to position the navbar */
-  position: relative;
+  background-position: left 10px center;
+}
+input[type="password"],
+select {
+  background: url("../../assets/images/lock.png");
+  border: 0.5px solid black;
+  padding: 16px 45px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-position: left 10px center;
 }
 
-/* Position the navbar container inside the image */
-.page {
-  position: absolute;
-  margin: 21px;
-  width: auto;
-}
-
-/* The navbar */
-.topnav {
-  margin-left: 400%;
-}
-
-/* Navbar links */
-.topnav a {
-  float: inline-end;
-  color: black;
+.button {
+  background-color: rgb(88, 88, 235);
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 10px 32px;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 19px;
+  display: inline-block;
+  font-size: 16px;
   font-weight: bold;
-}
-
-.topnav a:hover {
-  background-color: rgb(198, 224, 240);
-  color: green;
-  font-size: 22px;
+  margin: 20px;
+  cursor: pointer;
 }
