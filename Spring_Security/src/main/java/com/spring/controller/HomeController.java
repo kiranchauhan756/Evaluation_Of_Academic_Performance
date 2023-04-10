@@ -14,9 +14,7 @@ import java.net.http.HttpResponse;
 @RestController
 @RequestMapping("/user")
 public class HomeController {
-
-
-
+    @Autowired
     private UserServiceI userService;
 
     public HomeController(UserServiceI userService) {
@@ -25,9 +23,12 @@ public class HomeController {
 
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody User user){
-    User user1=userService.login(user);
-
-   return ResponseEntity.status(HttpStatus.CREATED).body(user1);
+        User user1 = this.userService.login(user);
+        if (user1 != null) {
+            return ResponseEntity.ok().body(user1);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(user1);
+        }
     }
 
 

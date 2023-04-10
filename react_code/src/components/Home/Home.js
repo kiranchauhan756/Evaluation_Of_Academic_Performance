@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./Home.css";
 import styled from "styled-components";
 import Bg from "../../assets/images/Bg.png";
+import swal from "sweetalert";
 
 import { useNavigate } from "react-router-dom";
 
@@ -57,11 +58,9 @@ const RightSubtitle = styled.div``;
 const Home = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   async function submitHandler(event) {
-    console.log("hello");
     event.preventDefault();
     const user = {
       email: emailRef.current.value,
@@ -76,31 +75,20 @@ const Home = () => {
       },
     });
 
-    if (response.ok) {
-      navigate("/dashboard");
+    if (!response.ok) {
+      swal({
+        title: "Invalid Email or Password",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      });
     } else {
-      setError(true);
+      navigate("/dashboard");
     }
   }
 
   return (
     <>
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-          textAlign: "center",
-          color: "red",
-          fontSize: "18px",
-          fontStyle: "italic",
-          fontWeight: "bold",
-        }}
-      >
-        <p>
-          Invalid Email Or Password...<br></br>
-        </p>
-      </div>
-
       <LoginPAge>
         <Container>
           <LoginLeft>
@@ -118,7 +106,7 @@ const Home = () => {
               <BoldText>Hello👋👋 Welcome back!</BoldText>
               <RightSubtitle>Login to get started📝📝</RightSubtitle>
               <br />
-              <form onSubmit={submitHandler}>
+              <form>
                 <input
                   type="email"
                   id="email"
@@ -136,7 +124,11 @@ const Home = () => {
                   placeholder="Password"
                 />
                 <br />
-                <button type="submit" className="button">
+                <button
+                  type="button"
+                  className="button"
+                  onClick={submitHandler}
+                >
                   Login
                 </button>
               </form>

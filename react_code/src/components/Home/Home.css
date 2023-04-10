@@ -28,10 +28,13 @@ select {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin: 20px;
-  cursor: pointer;
+}
+.button:hover {
+  font-size: 21px;
+  color: solid white 9px;
 }
 input[type="text"],
 select {

@@ -11,12 +11,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "EMAIL", nullable = false)
-    private String email;
-
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
-
     public int getId() {
         return id;
     }
@@ -24,6 +18,13 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
+
 
     public String getEmail() {
         return email;
