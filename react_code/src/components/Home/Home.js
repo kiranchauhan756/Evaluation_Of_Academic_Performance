@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import "./Home.css";
 import styled from "styled-components";
 import Bg from "../../assets/images/Bg.png";
-import "../../App.css";
-//import Ellipse from "../../assets/images/Ellipse.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -138,7 +136,7 @@ const Home = () => {
                   placeholder="Password"
                 />
                 <br />
-                <button type="submit" class="button">
+                <button type="submit" className="button">
                   Login
                 </button>
               </form>
