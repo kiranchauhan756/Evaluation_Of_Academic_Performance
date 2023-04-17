@@ -1,49 +1,64 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Student() {
-  const [formValue, setFormValue] = useState({
-    username: "",
-    email: "",
-    phone: "",
-    address: "",
-    status: "",
-  });
-  const [message, setMessage] = useState();
+const Student = () => {
   const navigate = useNavigate();
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setFormValue({ ...formValue, [name]: value });
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const allInputvalue = {
-      username: formValue.username,
-      email: formValue.email,
-      phone: formValue.phone,
-      address: formValue.address,
-      status: formValue.status,
+
+  const emailRef = useRef("");
+  const firstNameRef = useRef("");
+  const lastNameRef = useRef("");
+  const addressRef = useRef("");
+  const phoneRef = useRef("");
+  const yearRef = useRef("");
+  const sectionRef = useRef("");
+  const fatherNameRef = useRef("");
+  const motherNameRef = useRef("");
+  const mentorRef = useRef("");
+  const roleRef = useRef("");
+  const passwordRef = useRef("");
+  const rollNumRef = useRef("");
+  const alternateEmailRef = useRef("");
+  const dobRef = useRef("");
+  const branchRef = useRef("");
+  const courseRef = useRef("");
+
+  async function submitHandler(event) {
+    event.preventDefault();
+    const studentData = {
+      email: emailRef.current.value,
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      address: addressRef.current.value,
+      phone: phoneRef.current.value,
+      year: yearRef.current.value,
+      section: sectionRef.current.value,
+      fatherName: fatherNameRef.current.value,
+      motherName: motherNameRef.current.value,
+      mentor: mentorRef.current.value,
+      role: roleRef.current.value,
+      password: passwordRef.current.value,
+      rollNum: rollNumRef.current.value,
+      alternateEmail: alternateEmailRef.current.value,
+      dob: dobRef.current.value,
+      branch: branchRef.current.value,
+      course: courseRef.current.value,
     };
-
-    let res = await fetch("http://localhost:8080/student/addStudent", {
+    const response = await fetch("http://localhost:8080/student/addStudent", {
       method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(allInputvalue),
+      body: JSON.stringify(studentData),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    let resjson = await res.json();
-    if (res.status === 200) {
-      setMessage(resjson.success);
-      setTimeout(() => {
-        navigate("/student");
-      }, 2000);
-    } else {
-      setMessage("Some Error Occured");
-    }
+    if (response.ok) {
+      navigate("/student");
 
-    //console.log(allInputvalue);
-  };
+      return response.json();
+    }
+  }
   return (
     <div>
       <React.Fragment>
@@ -51,18 +66,138 @@ function Student() {
         <Header>
           <div className="container">
             <div className="col-md-9">
-              <p className="text-success"> {message} </p>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={submitHandler}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="mb-3">
-                      <label className="form-lable">Username</label>
+                      <label className="form-lable">First Name</label>
                       <input
                         type="text"
                         name="username"
                         className="form-control"
-                        value={formValue.username}
-                        onChange={handleInput}
+                        ref={firstNameRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Last Name</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={lastNameRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Date of birth</label>
+                      <input
+                        type="date"
+                        name="username"
+                        className="form-control"
+                        ref={dobRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Course</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={courseRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Branch</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={branchRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Year</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={yearRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Section</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={sectionRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Roll Number</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={rollNumRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Mentor</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={mentorRef}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Father Name</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={fatherNameRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Mother Name</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={motherNameRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Phone Number</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={phoneRef}
                       />
                     </div>
                   </div>
@@ -73,20 +208,29 @@ function Student() {
                         type="text"
                         name="email"
                         className="form-control"
-                        value={formValue.email}
-                        onChange={handleInput}
+                        ref={emailRef}
                       />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="mb-3">
-                      <label className="form-lable">Phone No</label>
+                      <label className="form-lable">Password</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={passwordRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Alternate Email</label>
                       <input
                         type="text"
                         name="phone"
                         className="form-control"
-                        value={formValue.phone}
-                        onChange={handleInput}
+                        ref={alternateEmailRef}
                       />
                     </div>
                   </div>
@@ -97,24 +241,19 @@ function Student() {
                         type="text"
                         name="address"
                         className="form-control"
-                        value={formValue.address}
-                        onChange={handleInput}
+                        ref={addressRef}
                       />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="mb-3">
-                      <label className="form-lable">Status</label>
-                      <select
+                      <label className="form-lable">Role</label>
+                      <input
+                        type="text"
+                        name="username"
                         className="form-control"
-                        name="status"
-                        value={formValue.status}
-                        onChange={handleInput}
-                      >
-                        <option value="">--Please Select--</option>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
-                      </select>
+                        ref={roleRef}
+                      />
                     </div>
                   </div>
 
@@ -134,7 +273,7 @@ function Student() {
       </React.Fragment>
     </div>
   );
-}
+};
 const Header = styled.div`
   position: absolute;
   left: 30%;

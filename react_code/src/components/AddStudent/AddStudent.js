@@ -7,7 +7,9 @@ function AddStudent() {
   const [userData, setUserdata] = useState([]);
   useEffect(() => {
     const getUserdata = async () => {
-      const reqData = await fetch("http://localhost:8080/getAllStudents");
+      const reqData = await fetch(
+        "http://localhost:8080/student/getAllStudents"
+      );
       const resData = await reqData.json();
       setUserdata(resData);
       // console.log(resData);
@@ -40,26 +42,26 @@ function AddStudent() {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {userData.map((userData, index) => (
-                  <tr key={index}>
-                    <td>{index + 1} </td>
-                    <td>{userData.email} </td>
-                    <td>{userData.firstName} </td>
-                    <td>{userData.lastName} </td>
-                    <td>{userData.status === 1 ? "Active" : "Inactive"} </td>
-                    <td>
-                      <Link
-                        to={"/editUser/" + userData.userid}
-                        className="btn btn-success mx-2"
-                      >
-                        Edit
-                      </Link>
-                      <Link to="/deleteUser" className="btn btn-danger">
-                        Delete
-                      </Link>
-                    </td>
-                  </tr>
-                ))} */}
+                    {userData.map((userData, index) => (
+                      <tr key={index}>
+                        <td>{index + 1} </td>
+                        <td>{userData.email} </td>
+                        <td>{userData.firstName} </td>
+                        <td>{userData.lastName} </td>
+                        <td>{userData.course} </td>
+                        <td>
+                          <Link
+                            to={"/editUser/" + userData.userid}
+                            className="btn btn-success mx-2"
+                          >
+                            Edit
+                          </Link>
+                          <Link to="/deleteUser" className="btn btn-danger">
+                            Delete
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
