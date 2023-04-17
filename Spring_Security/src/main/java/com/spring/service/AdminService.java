@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import com.spring.entities.Admin;
-import com.spring.entities.User;
 import com.spring.repo.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

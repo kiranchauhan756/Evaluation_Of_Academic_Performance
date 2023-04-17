@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import Internal from "./components/Internal/Internal";
 import Contact from "./components/Contact/Contact";
 import AdminProfile from "./components/AdminDashboard/AdminProfile";
+import AddStudent from "./components/AddStudent/AddStudent";
 import Student from "./components/AddStudent/Student";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,9 +27,10 @@ function App() {
                 element={<AdminDashboard />}
               />
               <Route exact="true" path="/internal" element={<Internal />} />
-              <Route exact="true" path="/student" element={<Student />} />
+              <Route exact="true" path="/student" element={<AddStudent />} />
               <Route exact="true" path="/AdminPro" element={<AdminProfile />} />
               <Route exact="true" path="/contact" element={<Contact />} />
+              <Route exact="true" path="/addStudent" element={<Student />} />
             </Routes>
           </div>
         </BrowserRouter>

@@ -5,10 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ADMIN")
 public class Admin {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
+    @Column(name = "ROLE", nullable = false)
+    private String role;
 
     @Column(name = "FirstName", nullable = false)
     private String firstName;
@@ -16,10 +18,18 @@ public class Admin {
     private String lastName;
     @Column(name = "Phone", nullable = false)
     private String phone;
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
 
-    public int getId() {
-        return id;
+
+    public String getRole() {
+        return role;
     }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -44,16 +54,6 @@ public class Admin {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Column(name = "EMAIL", nullable = false)
-    private String email;
-
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
 
 
     public String getEmail() {

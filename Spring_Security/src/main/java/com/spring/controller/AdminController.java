@@ -1,7 +1,7 @@
 package com.spring.controller;
 
-import com.spring.entities.User;
-import com.spring.service.UserServiceI;
+import com.spring.entities.Student;
+import com.spring.service.StudentServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,47 +11,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/student")
 public class AdminController {
     @Autowired
-    private UserServiceI userService;
+    private StudentServiceI studentService;
 
     @PostMapping("/addStudent")
-    public ResponseEntity<User> addUser(@RequestBody User user){
-        User user1=this.userService.addUser(user);
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        Student user1 = this.studentService.addStudent(student);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
-    @PutMapping("/update/{email}")
-    public ResponseEntity<User> updateUser(@PathVariable String email,@RequestBody User user){
-        User user1=this.userService.updateUser(email,user);
-        if(user1==null){
+
+    @PutMapping("/updateStudent/{email}")
+    public ResponseEntity<Student> updateStudent(@PathVariable String email, @RequestBody Student student) {
+        Student student1 = this.studentService.updateStudent(email, student);
+        if (student1 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
+        return ResponseEntity.status(HttpStatus.CREATED).body(student1);
     }
 
-    @DeleteMapping("/delete/{email}")
-    public void deleteUser(@PathVariable String email){
-        this.userService.deleteUser(email);
+    @DeleteMapping("/deleteStudent/{email}")
+    public void deleteStudent(@PathVariable String email) {
+        this.studentService.deleteStudent(email);
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<List<User>>getAll(){
-        List<User> list=new ArrayList<>();
-        list=this.userService.getAllUsers();
-        if(list.isEmpty())return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    @GetMapping("/getAllStudents")
+    public ResponseEntity<List<Student>> getAllStudents() {
+        List<Student> list = new ArrayList<>();
+        list = this.studentService.getAllStudents();
+        if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
-
-//    @GetMapping("/getUser/{email}")
-//    public ResponseEntity<User> getSingleUSer(@PathVariable User user){
-//
-//        User user1=this.userService.getSingleUser(user);
-//        if(user1==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
-//    }
-
-
 
 
 }

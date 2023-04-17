@@ -1,91 +1,78 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
-import AdminDash from "./AdminDash";
-
-const url = "http://localhost:8080/findAdmin/admin@gmail.com";
 
 function AddStudent() {
-  const [userData, setUserData] = useState({});
-
+  const [userData, setUserdata] = useState([]);
   useEffect(() => {
-    getGitHubUserWithFetch();
+    const getUserdata = async () => {
+      const reqData = await fetch("http://localhost:8080/getAllStudents");
+      const resData = await reqData.json();
+      setUserdata(resData);
+      // console.log(resData);
+    };
+    getUserdata();
   }, []);
-
-  const getGitHubUserWithFetch = async () => {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    setUserData(jsonData);
-  };
 
   return (
     <div>
-      <AdminDash />
-      <Header>
-        <div className="container">
-          <div className="row gutters">
-            <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12"></div>
-            <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-              <div className="card h-100">
-                <div className="card-body">
-                  <div className="row gutters">
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"></div>
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                      <div className="form-group">
-                        <label htmlFor="fullName">First Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="fullName"
-                          value={userData.firstName}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                      <div className="form-group">
-                        <label htmlFor="eMail">LastName</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="eMail"
-                          value={userData.lastName}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                      <div className="form-group">
-                        <label htmlFor="phone">Email</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="phone"
-                          value={userData.email}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                      <div className="form-group">
-                        <label htmlFor="website">Phone</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="website"
-                          value={userData.phone}
-                        />
-                      </div>
-                    </div>
-                  </div>
+      <React.Fragment>
+        <AdminDash />
+        <Header>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="d-grid d-md-flex justify-content-md-end mb-3">
+                  <Link to="/addStudent" className="button">
+                    Add Student
+                  </Link>
                 </div>
+                <br />
+                <br />
+                <table className="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Email</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Course</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* {userData.map((userData, index) => (
+                  <tr key={index}>
+                    <td>{index + 1} </td>
+                    <td>{userData.email} </td>
+                    <td>{userData.firstName} </td>
+                    <td>{userData.lastName} </td>
+                    <td>{userData.status === 1 ? "Active" : "Inactive"} </td>
+                    <td>
+                      <Link
+                        to={"/editUser/" + userData.userid}
+                        className="btn btn-success mx-2"
+                      >
+                        Edit
+                      </Link>
+                      <Link to="/deleteUser" className="btn btn-danger">
+                        Delete
+                      </Link>
+                    </td>
+                  </tr>
+                ))} */}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        </div>
-      </Header>
+        </Header>
+      </React.Fragment>
     </div>
   );
 }
 const Header = styled.div`
   position: absolute;
-  left: 20%;
+  left: 30%;
   top: 20%;
 `;
 

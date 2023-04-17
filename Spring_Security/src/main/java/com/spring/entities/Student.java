@@ -46,11 +46,28 @@ public class Student {
     @Column(name="ALTER_EMAIL",nullable=false)
     private String alternateEmail;
 
+
     @Column(name="ROLL_NUM",nullable=false)
     private String rollNum;
 
+    @Column(name = "ROLE", nullable = false)
+    private String role;
+
     @Column(name="MENTOR",nullable=false)
     private String mentor;
+
+
+    @Column(name="BRANCH",nullable=false)
+    private String branch;
+
+
+    @Column(name="DOB",nullable=false)
+    private Date dob;
+
+
+    @Column(name="PHONE_NUM",nullable=false)
+    private String phone;
+
 
     public String getEmail() {
         return email;
@@ -79,6 +96,14 @@ public class Student {
     public String getPassword() {
         return password;
     }
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 
     public void setPassword(String password) {
         this.password = password;
@@ -179,15 +204,4 @@ public class Student {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    @Column(name="BRANCH",nullable=false)
-    private String branch;
-
-
-    @Column(name="DOB",nullable=false)
-    private Date dob;
-
-
-    @Column(name="PHONE_NUM",nullable=false)
-    private String phone;
 }

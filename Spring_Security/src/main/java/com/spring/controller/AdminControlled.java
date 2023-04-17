@@ -1,7 +1,6 @@
 package com.spring.controller;
 
 import com.spring.entities.Admin;
-import com.spring.entities.User;
 import com.spring.service.AdminServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ public class AdminControlled {
     private AdminServiceI adminService;
 
     @PostMapping("/addAdmin")
-    public ResponseEntity<Admin> addUser(@RequestBody Admin admin){
+    public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin){
         Admin admin1=this.adminService.addAdmin(admin);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(admin1);
