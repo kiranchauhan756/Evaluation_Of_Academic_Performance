@@ -82,6 +82,9 @@ const Home = () => {
         buttons: true,
         dangerMode: true,
       });
+    }
+    if (emailRef.current.value === "admin@gmail.com") {
+      navigate("/AdminDashboard");
     } else {
       navigate("/dashboard");
     }

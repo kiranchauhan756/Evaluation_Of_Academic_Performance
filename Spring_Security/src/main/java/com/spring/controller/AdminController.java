@@ -42,13 +42,14 @@ public class AdminController {
         if(list.isEmpty())return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
-    @GetMapping("/getUser/{email}")
-    public ResponseEntity<User> getSingleUSer(@PathVariable User user){
 
-        User user1=this.userService.getSingleUser(user);
-        if(user1==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
-    }
+//    @GetMapping("/getUser/{email}")
+//    public ResponseEntity<User> getSingleUSer(@PathVariable User user){
+//
+//        User user1=this.userService.getSingleUser(user);
+//        if(user1==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
+//    }
 
 
 

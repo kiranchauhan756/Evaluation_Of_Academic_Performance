@@ -53,11 +53,11 @@ public class UserService implements UserServiceI{
         return list;
     }
 
-    @Override
-    public User getSingleUser(User user) {
-      User user
-        return null;
-    }
+//    @Override
+//    public User getSingleUser(User user) {
+//      User user
+//        return null;
+//    }
 
 
 }

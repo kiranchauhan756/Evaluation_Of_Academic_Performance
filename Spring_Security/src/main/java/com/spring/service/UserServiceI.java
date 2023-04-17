@@ -14,6 +14,4 @@ public interface UserServiceI {
     void deleteUser(String email);
 
     List<User> getAllUsers();
-
-    User getSingleUser(User user);
 }
