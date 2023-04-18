@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 
-function AddStudent() {
+function AddSubject() {
   const [userData, setUserdata] = useState([]);
   useEffect(() => {
     const getUserdata = async () => {
       const reqData = await fetch(
-        "http://localhost:8080/student/getAllStudents"
+        "http://localhost:8080/subject/getAllSubjects"
       );
       const resData = await reqData.json();
       setUserdata(resData);
@@ -26,8 +26,8 @@ function AddStudent() {
             <div className="row">
               <div className="col-md-9">
                 <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link to="/addStudent" className="button">
-                    Add Student
+                  <Link to="/subject" className="button">
+                    Add Subject
                   </Link>
                 </div>
                 <br />
@@ -35,20 +35,24 @@ function AddStudent() {
                 <table className="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Email</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
+                      <th>Subject Code</th>
+                      <th>Subject Name</th>
+                      <th>Branch</th>
+                      <th>Year</th>
                       <th>Course</th>
+                      <th>Semester</th>
                     </tr>
                   </thead>
                   <tbody>
                     {userData.map((userData, index) => (
                       <tr key={index}>
                         <td>{index + 1} </td>
-                        <td>{userData.email} </td>
-                        <td>{userData.firstName} </td>
-                        <td>{userData.lastName} </td>
+                        <td>{userData.subjectCode} </td>
+                        <td>{userData.subjectName} </td>
+                        <td>{userData.branch} </td>
+                        <td>{userData.year} </td>
                         <td>{userData.course} </td>
+                        <td>{userData.semester} </td>
                         <td>
                           <Link
                             to={"/updateStudent/" + userData.email}
@@ -81,4 +85,4 @@ const Header = styled.div`
   top: 20%;
 `;
 
-export default AddStudent;
+export default AddSubject;

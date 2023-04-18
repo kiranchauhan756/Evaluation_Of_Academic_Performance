@@ -40,20 +40,28 @@ export default function AdminDash() {
                 </Item>
               </NavLink>
 
-              <NavLink to="/internal">
+              <NavLink to="/addSubject">
                 <Item>
                   <IconContainer>
                     <Icon src={Exam} />
                   </IconContainer>
-                  <IconTitle>Mark Internals </IconTitle>
+                  <IconTitle>Add Subjects</IconTitle>
                 </Item>
               </NavLink>
+
+              <Item>
+                <IconContainer>
+                  <Icon src={Exam} />
+                </IconContainer>
+                <IconTitle>Mark Internals</IconTitle>
+              </Item>
+
               <NavLink to="/student">
                 <Item>
                   <IconContainer>
                     <Icon src={Attendance} />
                   </IconContainer>
-                  <IconTitle>Students</IconTitle>
+                  <IconTitle>Add Student</IconTitle>
                 </Item>
               </NavLink>
               <Item>

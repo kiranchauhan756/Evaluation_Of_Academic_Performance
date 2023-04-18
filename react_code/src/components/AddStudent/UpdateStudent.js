@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Student = () => {
+//const STUDENT_API_BASE_URL = "http://localhost:8080/student/updateStudent";
+
+const UpdateStudent = () => {
   const navigate = useNavigate();
 
   const emailRef = useRef("");
@@ -46,13 +48,16 @@ const Student = () => {
       branch: branchRef.current.value,
       course: courseRef.current.value,
     };
-    const response = await fetch("http://localhost:8080/student/addStudent", {
-      method: "POST",
-      body: JSON.stringify(studentData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "http://localhost:8080/student/updateStudent",
+      {
+        method: "POST",
+        body: JSON.stringify(studentData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (response.ok) {
       navigate("/student");
 
@@ -280,4 +285,4 @@ const Header = styled.div`
   top: 10%;
 `;
 
-export default Student;
+export default UpdateStudent;
