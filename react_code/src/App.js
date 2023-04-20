@@ -9,10 +9,11 @@ import Internal from "./components/Internal/Internal";
 import Contact from "./components/Contact/Contact";
 import AdminProfile from "./components/AdminDashboard/AdminProfile";
 import AddStudent from "./components/AddStudent/AddStudent";
-import UpdateStudent from "./components/AddStudent/UpdateStudent";
+
 import Student from "./components/AddStudent/Student";
-import AddSubject from "./components/Marks/AddSubject";
-import Subjects from "./components/Marks/Subjects";
+import AddSubject from "./components/AddSubject/AddSubject";
+import Subjects from "./components/AddSubject/Subjects";
+import Marks from "./components/Marks/Marks";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
@@ -36,11 +37,7 @@ function App() {
               <Route exact="true" path="/addStudent" element={<Student />} />
               <Route exact="true" path="/addSubject" element={<AddSubject />} />
               <Route exact="true" path="/subject" element={<Subjects />} />
-              <Route
-                exact="true"
-                path="/updateStudent/:email"
-                element={<UpdateStudent />}
-              />
+              <Route exact="true" path="/marks" element={<Marks />} />\
             </Routes>
           </div>
         </BrowserRouter>

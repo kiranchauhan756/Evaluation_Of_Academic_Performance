@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 function AddStudent() {
   const [userData, setUserdata] = useState([]);
+
   useEffect(() => {
     const getUserdata = async () => {
       const reqData = await fetch(
@@ -16,6 +17,21 @@ function AddStudent() {
     };
     getUserdata();
   }, []);
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  function handleDelete(email) {
+    fetch(`http://localhost:8080/student/deleteStudent/${email}`, {
+      method: "DELETE",
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.log(resp);
+      });
+    });
+    refreshPage();
+  }
 
   return (
     <div>
@@ -44,24 +60,24 @@ function AddStudent() {
                   <tbody>
                     {userData.map((userData, index) => (
                       <tr key={index}>
-                        <td>{index + 1} </td>
                         <td>{userData.email} </td>
                         <td>{userData.firstName} </td>
                         <td>{userData.lastName} </td>
                         <td>{userData.course} </td>
                         <td>
-                          <Link
-                            to={"/updateStudent/" + userData.email}
-                            className="btn btn-success mx-2"
+                          <button
+                            onClick={() => alert(userData.email)}
+                            className="btn btn-success mx-auto"
                           >
                             Edit
-                          </Link>
-                          <Link
-                            to={"/deleteStudent/" + userData.email}
+                          </button>{" "}
+                          &nbsp; &nbsp;
+                          <button
+                            onClick={() => handleDelete(userData.email)}
                             className="btn btn-danger"
                           >
                             Delete
-                          </Link>
+                          </button>
                         </td>
                       </tr>
                     ))}

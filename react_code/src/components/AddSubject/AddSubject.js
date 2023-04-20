@@ -17,6 +17,21 @@ function AddSubject() {
     getUserdata();
   }, []);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  function handleDelete(subjectCode) {
+    fetch(`http://localhost:8080/subject/deleteSubject/${subjectCode}`, {
+      method: "DELETE",
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.log(resp);
+      });
+    });
+    refreshPage();
+  }
+
   return (
     <div>
       <React.Fragment>
@@ -26,7 +41,7 @@ function AddSubject() {
             <div className="row">
               <div className="col-md-9">
                 <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link to="/subject" className="button">
+                  <Link id="route" to="/subject" className="button">
                     Add Subject
                   </Link>
                 </div>
@@ -46,7 +61,6 @@ function AddSubject() {
                   <tbody>
                     {userData.map((userData, index) => (
                       <tr key={index}>
-                        <td>{index + 1} </td>
                         <td>{userData.subjectCode} </td>
                         <td>{userData.subjectName} </td>
                         <td>{userData.branch} </td>
@@ -54,18 +68,21 @@ function AddSubject() {
                         <td>{userData.course} </td>
                         <td>{userData.semester} </td>
                         <td>
-                          <Link
-                            to={"/updateStudent/" + userData.email}
+                          <button
+                            onClick={() => userData.subjectCode}
                             className="btn btn-success mx-2"
                           >
+                            {" "}
                             Edit
-                          </Link>
-                          <Link
-                            to={"/deleteStudent/" + userData.email}
+                          </button>
+                          &nbsp; &nbsp;
+                          <button
+                            onClick={() => handleDelete(userData.subjectCode)}
                             className="btn btn-danger"
                           >
+                            {" "}
                             Delete
-                          </Link>
+                          </button>
                         </td>
                       </tr>
                     ))}

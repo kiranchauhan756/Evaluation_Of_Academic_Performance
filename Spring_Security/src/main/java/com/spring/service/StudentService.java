@@ -2,6 +2,7 @@ package com.spring.service;
 
 import com.spring.entities.Student;
 import com.spring.repo.StudentRepository;
+import com.spring.request.FindStudent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,4 +53,12 @@ public class StudentService implements StudentServiceI {
     public List<Student> getAllStudents() {
         return this.studentRepository.findAll();
     }
+
+    @Override
+    public List<Student> getAllStudentsByCourseAndYearAndBranchAndSemester(FindStudent findStudent) {
+        return this.studentRepository.findAllByCourseAndYearAndSemesterAndBranch(findStudent.getCourse(),findStudent.getYear(),
+                findStudent.getSemester(),findStudent.getBranch());
+    }
+
+
 }

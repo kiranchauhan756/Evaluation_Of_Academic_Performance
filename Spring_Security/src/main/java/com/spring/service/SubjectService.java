@@ -36,7 +36,7 @@ public class SubjectService implements SubjectServiceI {
     public void deleteSubject(String subjectCode) {
 
         Subject subject = this.subjectRepository.findBySubjectCode(subjectCode);
-        this.subjectRepository.findBySubjectCode(subjectCode);
+        this.subjectRepository.delete(subject);
     }
 
     @Override

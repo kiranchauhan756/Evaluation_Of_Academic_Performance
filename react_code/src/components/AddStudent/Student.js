@@ -24,6 +24,7 @@ const Student = () => {
   const dobRef = useRef("");
   const branchRef = useRef("");
   const courseRef = useRef("");
+  const semesterRef = useRef("");
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -45,6 +46,7 @@ const Student = () => {
       dob: dobRef.current.value,
       branch: branchRef.current.value,
       course: courseRef.current.value,
+      semester: semesterRef.current.value,
     };
     const response = await fetch("http://localhost:8080/student/addStudent", {
       method: "POST",
@@ -120,6 +122,17 @@ const Student = () => {
                         name="username"
                         className="form-control"
                         ref={branchRef}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-lable">Semester</label>
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        ref={semesterRef}
                       />
                     </div>
                   </div>

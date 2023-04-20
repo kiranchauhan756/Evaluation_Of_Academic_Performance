@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entities.Student;
+import com.spring.request.FindStudent;
 import com.spring.service.StudentServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,14 @@ public class AdminController {
         if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
+
+    @PostMapping("/getAllStudentsByCourseAndSemester")
+    public ResponseEntity<List<Student>> getAllStudentsByCourseAndSemester(@RequestBody FindStudent findStudent) {
+        List<Student> listOfStudent = studentService.getAllStudentsByCourseAndYearAndBranchAndSemester(findStudent);
+        return ResponseEntity.status(HttpStatus.OK).body(listOfStudent);
+    }
+
+
 
 
 }

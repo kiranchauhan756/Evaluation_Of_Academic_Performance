@@ -8,6 +8,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SUBJECT")
 public class Subject {
+
+    @Id
+    @Column(name = "SUB_CODE", nullable = false)
+    private String subjectCode;
+
+    @Column(name = "SUB_NAME", nullable = false)
+    private String subjectName;
+
+    @Column(name = "COURSE", nullable = false)
+    private String course;
+
+    @Column(name = "BRANCH", nullable = false)
+    private String branch;
+
+    @Column(name = "YEAR", nullable = false)
+    private int year;
+
+    @Column(name = "SEMESTER", nullable = false)
+    private String semester;
+
     public String getSubjectCode() {
         return subjectCode;
     }
@@ -55,24 +75,5 @@ public class Subject {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-
-    @Id
-    @Column(name = "SUB_CODE", nullable = false)
-    private String subjectCode;
-
-    @Column(name = "SUB_NAME", nullable = false)
-    private String subjectName;
-
-    @Column(name = "COURSE", nullable = false)
-    private String course;
-
-    @Column(name = "BRANCH", nullable = false)
-    private String branch;
-
-    @Column(name = "YEAR", nullable = false)
-    private int year;
-
-    @Column(name = "SEMESTER", nullable = false)
-    private String semester;
 
 }
