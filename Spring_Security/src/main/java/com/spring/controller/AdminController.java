@@ -49,7 +49,7 @@ public class AdminController {
 
     @PostMapping("/getAllStudentsByCourseAndSemester")
     public ResponseEntity<List<Student>> getAllStudentsByCourseAndSemester(@RequestBody FindStudent findStudent) {
-        List<Student> listOfStudent = studentService.getAllStudentsByCourseAndYearAndBranchAndSemester(findStudent);
+        List<Student> listOfStudent = this.studentService.getAllStudentsByCourseAndYearAndBranchAndSemester(findStudent);
         return ResponseEntity.status(HttpStatus.OK).body(listOfStudent);
     }
 

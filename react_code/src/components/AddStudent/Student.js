@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const Student = () => {
   const navigate = useNavigate();
-
   const emailRef = useRef("");
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
@@ -96,9 +95,8 @@ const Student = () => {
                     <div className="mb-3">
                       <label className="form-lable">Date of birth</label>
                       <input
-                        type="date"
-                        name="username"
                         className="form-control"
+                        type="text"
                         ref={dobRef}
                       />
                     </div>

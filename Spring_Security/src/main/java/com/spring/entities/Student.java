@@ -60,7 +60,7 @@ public class Student {
 
 
     @Column(name = "DOB", nullable = false)
-    private Date dob;
+    private String dob;
 
     public String getSemester() {
         return semester;
@@ -199,11 +199,11 @@ public class Student {
         this.branch = branch;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
