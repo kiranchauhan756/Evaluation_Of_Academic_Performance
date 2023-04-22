@@ -2,7 +2,7 @@ import React from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 import { useRef, useState } from "react";
-
+import { Link } from "react-router-dom";
 const Marks = () => {
   const courseRef = useRef("");
   const semesterRef = useRef("");
@@ -112,12 +112,12 @@ const Marks = () => {
                       <td>{userData.lastName} </td>
                       <td>{userData.course} </td>
                       <td>
-                        <button
-                          onClick={() => alert(userData.email)}
+                        <Link
+                          to={"/assignSubject/" + userData.email}
                           className="btn btn-warning"
                         >
-                          Assignment Marks
-                        </button>
+                          Assign Subjects
+                        </Link>
                         &nbsp; &nbsp;
                         <button
                           onClick={() => alert(userData.email)}

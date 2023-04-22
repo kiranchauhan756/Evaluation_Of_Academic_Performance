@@ -13,6 +13,7 @@ import AddStudent from "./components/AddStudent/AddStudent";
 import Student from "./components/AddStudent/Student";
 import AddSubject from "./components/AddSubject/AddSubject";
 import EditSubject from "./components/AddSubject/EditSubject";
+import AssignSubject from "./components/Marks/AssignSubject";
 import Subjects from "./components/AddSubject/Subjects";
 import Marks from "./components/Marks/Marks";
 
@@ -39,6 +40,11 @@ function App() {
               <Route exact="true" path="/addSubject" element={<AddSubject />} />
               <Route exact="true" path="/subject" element={<Subjects />} />
               <Route exact="true" path="/marks" element={<Marks />} />
+              <Route
+                exact="true"
+                path="/assignSubject/:email"
+                element={<AssignSubject />}
+              />
               <Route
                 exact="true"
                 path="/editSubject/:subjectCode"
