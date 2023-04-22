@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 function AddSubject() {
   const [userData, setUserdata] = useState([]);
+
   useEffect(() => {
     const getUserdata = async () => {
       const reqData = await fetch(
@@ -52,10 +53,6 @@ function AddSubject() {
                     <tr>
                       <th>Subject Code</th>
                       <th>Subject Name</th>
-                      <th>Branch</th>
-                      <th>Year</th>
-                      <th>Course</th>
-                      <th>Semester</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -63,18 +60,14 @@ function AddSubject() {
                       <tr key={index}>
                         <td>{userData.subjectCode} </td>
                         <td>{userData.subjectName} </td>
-                        <td>{userData.branch} </td>
-                        <td>{userData.year} </td>
-                        <td>{userData.course} </td>
-                        <td>{userData.semester} </td>
                         <td>
-                          <button
-                            onClick={() => userData.subjectCode}
+                          <Link
+                            to={"/editSubject/" + userData.subjectCode}
                             className="btn btn-success mx-2"
                           >
                             {" "}
-                            Edit
-                          </button>
+                            Update
+                          </Link>
                           &nbsp; &nbsp;
                           <button
                             onClick={() => handleDelete(userData.subjectCode)}

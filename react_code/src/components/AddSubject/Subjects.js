@@ -9,20 +9,12 @@ const Subject = () => {
 
   const subjectCodeRef = useRef("");
   const subjectNameRef = useRef("");
-  const yearRef = useRef("");
-  const semesterRef = useRef("");
-  const branchRef = useRef("");
-  const courseRef = useRef("");
 
   async function submitHandler(event) {
     event.preventDefault();
     const studentData = {
       subjectCode: subjectCodeRef.current.value,
       subjectName: subjectNameRef.current.value,
-      year: yearRef.current.value,
-      semester: semesterRef.current.value,
-      branch: branchRef.current.value,
-      course: courseRef.current.value,
     };
     const response = await fetch("http://localhost:8080/subject/addSubject", {
       method: "POST",
@@ -68,50 +60,7 @@ const Subject = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-md-6">
-                    <div className="mb-3">
-                      <label className="form-lable">Year</label>
-                      <input
-                        type="number"
-                        name="username"
-                        className="form-control"
-                        ref={yearRef}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="mb-3">
-                      <label className="form-lable">Course</label>
-                      <input
-                        type="text"
-                        name="username"
-                        className="form-control"
-                        ref={courseRef}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="mb-3">
-                      <label className="form-lable">Branch</label>
-                      <input
-                        type="text"
-                        name="username"
-                        className="form-control"
-                        ref={branchRef}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="mb-3">
-                      <label className="form-lable">Semester</label>
-                      <input
-                        type="text"
-                        name="username"
-                        className="form-control"
-                        ref={semesterRef}
-                      />
-                    </div>
-                  </div>
+
                   <div className="col-md-12">
                     <div className="mb-3">
                       <label className="form-lable"></label>

@@ -10,4 +10,6 @@ public interface SubjectServiceI{
     void  deleteSubject(String subjectCode);
 
     Subject addSubject(Subject subject);
+
+    Subject findSubject(String subjectCode);
 }

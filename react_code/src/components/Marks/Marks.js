@@ -114,9 +114,16 @@ const Marks = () => {
                       <td>
                         <button
                           onClick={() => alert(userData.email)}
-                          className="btn btn-danger"
+                          className="btn btn-warning"
                         >
-                          Delete
+                          Assignment Marks
+                        </button>
+                        &nbsp; &nbsp;
+                        <button
+                          onClick={() => alert(userData.email)}
+                          className="btn btn-warning"
+                        >
+                          Exam Marks
                         </button>
                       </td>
                     </tr>

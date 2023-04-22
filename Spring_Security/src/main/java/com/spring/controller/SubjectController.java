@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/subject")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SubjectController {
 
     @Autowired
@@ -46,4 +48,12 @@ public class SubjectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
 
+    @GetMapping("/findSubject/{subjectCode}")
+    public ResponseEntity<Subject> findSubject(@PathVariable String subjectCode){
+        Subject subject=this.subjectService.findSubject(subjectCode);
+        if(subject==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.of(Optional.of(subject));
+    }
 }
