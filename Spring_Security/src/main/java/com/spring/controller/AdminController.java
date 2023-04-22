@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entities.Student;
+import com.spring.request.AssignSubReq;
 import com.spring.request.FindStudent;
 import com.spring.service.StudentServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -53,7 +55,17 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(listOfStudent);
     }
 
-
+    @GetMapping("/findStudent/{email}")
+    public ResponseEntity<Student> findStudentByEmail(@PathVariable String email){
+        Student student=this.studentService.findByEmail(email);
+        if(student==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.of(Optional.of(student));
+    }
+    @PutMapping("/assignSubject")
+    public ResponseEntity<Student> assignSubjectRequest(@RequestBody AssignSubReq assignSubReq){
+        Student student = studentService.assignSubject(assignSubReq.getEmail(), assignSubReq.getSubCode());
+        return ResponseEntity.of(Optional.of(student));
+    }
 
 
 }

@@ -19,4 +19,7 @@ public interface StudentServiceI {
     List<Student> getAllStudentsByCourseAndYearAndBranchAndSemester(FindStudent findStudent);
 
 
+    Student findByEmail(String email);
+
+    Student assignSubject(String email, String subCode);
 }

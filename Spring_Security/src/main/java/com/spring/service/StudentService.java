@@ -1,12 +1,14 @@
 package com.spring.service;
 
 import com.spring.entities.Student;
+import com.spring.entities.Subject;
 import com.spring.repo.StudentRepository;
+import com.spring.repo.SubjectRepository;
 import com.spring.request.FindStudent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.Subject;
+
 import java.util.List;
 
 @Service
@@ -14,6 +16,10 @@ public class StudentService implements StudentServiceI {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private SubjectRepository subjectRepository;
+
 
     @Override
     public Student addStudent(Student student) {
@@ -61,6 +67,22 @@ public class StudentService implements StudentServiceI {
                 findStudent.getSemester(),findStudent.getBranch());
     }
 
+    @Override
+    public Student findByEmail(String email) {
+        Student student=this.studentRepository.findByEmail(email);
+        return student;
+    }
+
+    @Override
+    public Student assignSubject(String email, String subjectCode) {
+
+        Student student =this.studentRepository.findByEmail(email);
+        Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
+        student.getSubjects().add(subject);
+        studentRepository.save(student);
+        return student;
+
+    }
 
 
 }

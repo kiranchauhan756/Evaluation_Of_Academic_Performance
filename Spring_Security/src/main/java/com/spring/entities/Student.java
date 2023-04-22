@@ -1,7 +1,10 @@
 package com.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -78,10 +81,25 @@ public class Student {
     private String phone;
 
 
+    @JsonManagedReference
+    @ManyToMany
+    @JoinTable(
+            name = "Student_Subjects",
+            joinColumns = {@JoinColumn(name = "student_id", nullable = true)},
+            inverseJoinColumns = {@JoinColumn(name = "subject_id", nullable = true)})
+    private Set<Subject> subjects = new HashSet<>();
 
 
     public String getEmail() {
         return email;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public void setEmail(String email) {

@@ -46,7 +46,7 @@ function AdminProfile() {
                         <input
                           type="email"
                           className="form-control"
-                          id="eMail"
+                          id="fullName"
                           value={userData.lastName}
                         />
                       </div>
@@ -57,7 +57,7 @@ function AdminProfile() {
                         <input
                           type="text"
                           className="form-control"
-                          id="phone"
+                          id="eMail"
                           value={userData.email}
                         />
                       </div>
@@ -68,7 +68,7 @@ function AdminProfile() {
                         <input
                           type="text"
                           className="form-control"
-                          id="website"
+                          id="eMail"
                           value={userData.phone}
                         />
                       </div>
