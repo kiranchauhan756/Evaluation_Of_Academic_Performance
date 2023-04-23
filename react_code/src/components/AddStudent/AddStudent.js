@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 function AddStudent() {
   const [userData, setUserdata] = useState([]);
-  //const [assignSubject, setAssignSubject] = useState([]);
 
   useEffect(() => {
     const getUserdata = async () => {
@@ -33,38 +32,7 @@ function AddStudent() {
     });
     refreshPage();
   }
-  function assignSubjects(email) {
-    fetch(`http://localhost:8080/subject/findSubject/`, {
-      method: "GET",
-    }).then((result) => {
-      result.json().then((resp) => {
-        console.log(resp);
-        // setAssignSubject(resp);
-      });
-    });
-    <div>
-      <div className="container">
-        <div className="col-md-9">
-          <form>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="mb-3">
-                  <label className="form-lable">Subject Code</label>
-                  <input type="text" name="username" className="form-control" />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="mb-3">
-                  <label className="form-lable">Subject Name</label>
-                  <input type="text" name="username" className="form-control" />
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>;
-  }
+
   return (
     <div>
       <React.Fragment>
@@ -112,11 +80,11 @@ function AddStudent() {
                           </button>
                           &nbsp; &nbsp;
                           <button
-                            onClick={() => assignSubjects(userData.email)}
+                            onClick={() => alert(userData.email)}
                             className="btn btn-warning"
                           >
                             {" "}
-                            Assign Subjects
+                            Show Subjects
                           </button>
                         </td>
                       </tr>

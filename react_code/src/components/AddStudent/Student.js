@@ -52,6 +52,7 @@ const Student = () => {
       body: JSON.stringify(studentData),
       headers: {
         "Content-Type": "application/json",
+        " charset": "utf-8",
       },
     });
     if (response.ok) {

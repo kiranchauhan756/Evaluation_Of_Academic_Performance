@@ -70,18 +70,22 @@ export default function AdminDash() {
                 </IconContainer>
                 <IconTitle>Mark Attendance</IconTitle>
               </Item>
-              <Item>
-                <IconContainer>
-                  <Icon src={Assignment} />
-                </IconContainer>
-                <IconTitle>Mark Assignments</IconTitle>
-              </Item>
-              <Item>
-                <IconContainer>
-                  <Icon src={Report} />
-                </IconContainer>
-                <IconTitle>Generate Report</IconTitle>
-              </Item>
+              <NavLink to="/assignment">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Assignment} />
+                  </IconContainer>
+                  <IconTitle>Mark Assignments</IconTitle>
+                </Item>
+              </NavLink>
+              <NavLink to="/report">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Report} />
+                  </IconContainer>
+                  <IconTitle>Generate Report</IconTitle>
+                </Item>
+              </NavLink>
               <Item>
                 <IconContainer>
                   <Icon src={Feedback} />

@@ -1,16 +1,16 @@
 package com.spring.request;
 
 public class AssignSubReq {
-    private String subCode;
+    private String subjectCode;
     private String email;
 
 
-    public String getSubCode() {
-        return subCode;
+    public String getSubjectCode() {
+        return subjectCode;
     }
 
-    public void setSubCode(String subCode) {
-        this.subCode = subCode;
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
 
     public String getEmail() {

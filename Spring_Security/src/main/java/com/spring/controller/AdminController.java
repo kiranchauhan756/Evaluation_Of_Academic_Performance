@@ -63,7 +63,8 @@ public class AdminController {
     }
     @PutMapping("/assignSubject")
     public ResponseEntity<Student> assignSubjectRequest(@RequestBody AssignSubReq assignSubReq){
-        Student student = studentService.assignSubject(assignSubReq.getEmail(), assignSubReq.getSubCode());
+        Student student = studentService.assignSubject(assignSubReq.getEmail(), assignSubReq.getSubjectCode());
+        if(student==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.of(Optional.of(student));
     }
 

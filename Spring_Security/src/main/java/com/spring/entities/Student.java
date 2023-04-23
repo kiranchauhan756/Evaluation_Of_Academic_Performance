@@ -1,5 +1,6 @@
 package com.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -11,58 +12,58 @@ import java.util.Set;
 @Table(name = "STUDENT")
 public class Student {
     @Id
-    @Column(name = "EMAIL", nullable = false)
+    @Column(name = "EMAIL",nullable = false)
     private String email;
 
-    @Column(name = "FIRST_NAME", nullable = false)
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "COURSE", nullable = false)
+    @Column(name = "COURSE")
     private String course;
 
 
-    @Column(name = "YEAR", nullable = false)
+    @Column(name = "YEAR")
     private int year;
 
-    @Column(name = "SECTION", nullable = false)
+    @Column(name = "SECTION")
     private String section;
 
 
-    @Column(name = "FATHER_NAME", nullable = false)
+    @Column(name = "FATHER_NAME")
     private String fatherName;
 
-    @Column(name = "MOTHER_NAME", nullable = false)
+    @Column(name = "MOTHER_NAME")
     private String motherName;
 
 
-    @Column(name = "ADDRESS", nullable = false)
+    @Column(name = "ADDRESS")
     private String address;
 
-    @Column(name = "ALTER_EMAIL", nullable = false)
+    @Column(name = "ALTER_EMAIL")
     private String alternateEmail;
 
 
-    @Column(name = "ROLL_NUM", nullable = false)
+    @Column(name = "ROLL_NUM")
     private String rollNum;
 
-    @Column(name = "ROLE", nullable = false)
+    @Column(name = "ROLE")
     private String role;
 
-    @Column(name = "MENTOR", nullable = false)
+    @Column(name = "MENTOR")
     private String mentor;
 
 
-    @Column(name = "BRANCH", nullable = false)
+    @Column(name = "BRANCH")
     private String branch;
 
 
-    @Column(name = "DOB", nullable = false)
+    @Column(name = "DOB")
     private String dob;
 
     public String getSemester() {
@@ -73,15 +74,16 @@ public class Student {
         this.semester = semester;
     }
 
-    @Column(name = "SEMESTER", nullable = false)
+    @Column(name = "SEMESTER")
     private String semester;
 
 
-    @Column(name = "PHONE_NUM", nullable = false)
+    @Column(name = "PHONE_NUM")
     private String phone;
 
 
-    @JsonManagedReference
+
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name = "Student_Subjects",

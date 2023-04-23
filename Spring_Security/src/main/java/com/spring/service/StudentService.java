@@ -78,6 +78,7 @@ public class StudentService implements StudentServiceI {
 
         Student student =this.studentRepository.findByEmail(email);
         Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
+        if(student==null || subject==null)return null;
         student.getSubjects().add(subject);
         studentRepository.save(student);
         return student;
