@@ -1,10 +1,11 @@
 package com.spring.service;
 
 import com.spring.entities.Student;
+import com.spring.entities.Subject;
 import com.spring.request.FindStudent;
 
-import javax.security.auth.Subject;
 import java.util.List;
+import java.util.Set;
 
 public interface StudentServiceI {
     Student addStudent(Student student);
@@ -22,4 +23,9 @@ public interface StudentServiceI {
     Student findByEmail(String email);
 
     Student assignSubject(String email, String subCode);
+
+    Set<Subject> getAllSubjects(String email);
+
+    void deleteAssignSubject(String email,String subjectCode);
+
 }

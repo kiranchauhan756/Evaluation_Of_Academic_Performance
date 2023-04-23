@@ -10,6 +10,7 @@ import AddStudent from "./components/AddStudent/AddStudent";
 import Student from "./components/AddStudent/Student";
 import AddSubject from "./components/AddSubject/AddSubject";
 import EditSubject from "./components/AddSubject/EditSubject";
+import ShowSubjects from "./components/Marks/ShowSubjects";
 import AssignSubject from "./components/Marks/AssignSubject";
 import Subjects from "./components/AddSubject/Subjects";
 import Marks from "./components/Marks/Marks";
@@ -37,6 +38,11 @@ function App() {
               <Route exact="true" path="/contact" element={<Contact />} />
               <Route exact="true" path="/addStudent" element={<Student />} />
               <Route exact="true" path="/addSubject" element={<AddSubject />} />
+              <Route
+                exact="true"
+                path="/showSubject/:email"
+                element={<ShowSubjects />}
+              />
               <Route exact="true" path="/subject" element={<Subjects />} />
               <Route exact="true" path="/marks" element={<Marks />} />
               <Route

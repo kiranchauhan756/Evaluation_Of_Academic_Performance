@@ -6,10 +6,13 @@ import com.spring.repo.StudentRepository;
 import com.spring.repo.SubjectRepository;
 import com.spring.request.FindStudent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StudentService implements StudentServiceI {
@@ -28,7 +31,7 @@ public class StudentService implements StudentServiceI {
 
     @Override
     public Student updateStudent(String email, Student student) {
-        Student student1=this.studentRepository.findByEmail(email);
+        Student student1 = this.studentRepository.findByEmail(email);
         student1.setAddress(student.getAddress());
         student1.setBranch(student.getBranch());
         student1.setCourse(student.getCourse());
@@ -52,8 +55,8 @@ public class StudentService implements StudentServiceI {
 
     @Override
     public void deleteStudent(String email) {
-     Student student=this.studentRepository.findByEmail(email);
-     this.studentRepository.delete(student);
+        Student student = this.studentRepository.findByEmail(email);
+        this.studentRepository.delete(student);
     }
 
     @Override
@@ -63,26 +66,40 @@ public class StudentService implements StudentServiceI {
 
     @Override
     public List<Student> getAllStudentsByCourseAndYearAndBranchAndSemester(FindStudent findStudent) {
-        return this.studentRepository.findAllByCourseAndYearAndSemesterAndBranch(findStudent.getCourse(),findStudent.getYear(),
-                findStudent.getSemester(),findStudent.getBranch());
+        return this.studentRepository.findAllByCourseAndYearAndSemesterAndBranch(findStudent.getCourse(), findStudent.getYear(),
+                findStudent.getSemester(), findStudent.getBranch());
     }
 
     @Override
     public Student findByEmail(String email) {
-        Student student=this.studentRepository.findByEmail(email);
+        Student student = this.studentRepository.findByEmail(email);
         return student;
     }
 
     @Override
     public Student assignSubject(String email, String subjectCode) {
 
-        Student student =this.studentRepository.findByEmail(email);
-        Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
-        if(student==null || subject==null)return null;
+        Student student = this.studentRepository.findByEmail(email);
+        Subject subject = this.subjectRepository.findBySubjectCode(subjectCode);
+        if (student == null || subject == null) return null;
         student.getSubjects().add(subject);
         studentRepository.save(student);
         return student;
 
+    }
+
+    @Override
+    public Set<Subject> getAllSubjects(String email) {
+        Student student = this.studentRepository.findByEmail(email);
+        return student.getSubjects();
+    }
+
+    @Override
+    public void deleteAssignSubject(String email, String subjectCode) {
+        Student student = this.studentRepository.findByEmail(email);
+        Subject subject = subjectRepository.findBySubjectCode(subjectCode);
+        student.getSubjects().remove(subject);
+        this.studentRepository.save(student);
     }
 
 

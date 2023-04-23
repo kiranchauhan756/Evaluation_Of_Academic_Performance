@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.entities.Student;
+import com.spring.entities.Subject;
 import com.spring.request.AssignSubReq;
 import com.spring.request.FindStudent;
 import com.spring.service.StudentServiceI;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -67,6 +69,20 @@ public class AdminController {
         if(student==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.of(Optional.of(student));
     }
+
+    @GetMapping("/getAllSubjects/{email}")
+    public ResponseEntity<Set<Subject>> getAllSubjectsByEmail(@PathVariable String email){
+        Set<Subject> allSubjects = studentService.getAllSubjects(email);
+        if(allSubjects==null)return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.OK).body(allSubjects);
+    }
+
+    @DeleteMapping("/delAssignSubject")
+    public void deleteAssignSubjects(@RequestBody AssignSubReq assignSubReq){
+        this.studentService.deleteAssignSubject(assignSubReq.getEmail(),assignSubReq.getSubjectCode());
+
+    }
+
 
 
 }

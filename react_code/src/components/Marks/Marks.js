@@ -113,7 +113,7 @@ const Marks = () => {
                       <td>{userData.course} </td>
                       <td>
                         <Link
-                          to={"/assignSubject/" + userData.email}
+                          to={"/showSubject/" + userData.email}
                           className="btn btn-warning"
                         >
                           Assign Subjects

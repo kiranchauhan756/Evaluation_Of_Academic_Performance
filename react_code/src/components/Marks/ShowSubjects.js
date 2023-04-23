@@ -1,30 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 
-function AddStudent() {
+function ShowSubject() {
+  const { email } = useParams();
   const [userData, setUserdata] = useState([]);
 
   useEffect(() => {
-    const getUserdata = async () => {
-      const reqData = await fetch(
-        "http://localhost:8080/student/getAllStudents"
-      );
-      const resData = await reqData.json();
-      setUserdata(resData);
-      // console.log(resData);
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
     };
-    getUserdata();
+    fetch("http://localhost:8080/student/getAllSubjects/" + email, request)
+      .then((response) => response.json())
+      .then((detail) => {
+        setUserdata(detail);
+      });
   }, []);
 
   function refreshPage() {
     window.location.reload(false);
   }
 
-  function handleDelete(email) {
-    fetch(`http://localhost:8080/student/delAssignSubject/${email}`, {
+  function handleDelete(subjectCode) {
+    const item = {
+      email: email,
+      subjectCode: subjectCode,
+    };
+    console.log(item);
+    fetch(`http://localhost:8080/student/delAssignSubject`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
     }).then((result) => {
       result.json().then((resp) => {
         console.log(resp);
@@ -42,49 +55,36 @@ function AddStudent() {
             <div className="row">
               <div className="col-md-9">
                 <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link to="/addStudent" className="button">
-                    Add Student
+                  <Link
+                    id="route"
+                    to={`/assignSubject/${email}`}
+                    className="button"
+                  >
+                    Add More
                   </Link>
                 </div>
                 <br />
                 <br />
+                <h5>subjects of student {email} are: </h5>
                 <table className="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Email</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Course</th>
+                      <th>Subject Code</th>
+                      <th>Subject Name</th>
                     </tr>
                   </thead>
                   <tbody>
                     {userData.map((userData, index) => (
                       <tr key={index}>
-                        <td>{userData.email} </td>
-                        <td>{userData.firstName} </td>
-                        <td>{userData.lastName} </td>
-                        <td>{userData.course} </td>
+                        <td>{userData.subjectCode} </td>
+                        <td>{userData.subjectName} </td>
                         <td>
                           <button
-                            onClick={() => alert(userData.email)}
-                            className="btn btn-success mx-auto"
-                          >
-                            Edit
-                          </button>{" "}
-                          &nbsp; &nbsp;
-                          <button
-                            onClick={() => handleDelete(userData.email)}
+                            onClick={() => handleDelete(userData.subjectCode)}
                             className="btn btn-danger"
                           >
-                            Delete
-                          </button>
-                          &nbsp; &nbsp;
-                          <button
-                            onClick={() => alert(userData.email)}
-                            className="btn btn-warning"
-                          >
                             {" "}
-                            Show Subjects
+                            Delete
                           </button>
                         </td>
                       </tr>
@@ -105,4 +105,4 @@ const Header = styled.div`
   top: 20%;
 `;
 
-export default AddStudent;
+export default ShowSubject;

@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 const AssignSubject = () => {
   const { email } = useParams();
+  const subjectCodeRef = useRef("");
+
+  async function submitHandler() {
+    const item = {
+      email: email,
+      subjectCode: subjectCodeRef.current.value,
+    };
+    await fetch("http://localhost:8080/student/assignSubject", {
+      method: "PUT",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        swal({
+          title: `this is does not exist`,
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        });
+      } else {
+        console.log("successfull");
+      }
+    });
+  }
   return (
     <div>
       <React.Fragment>
@@ -12,7 +40,7 @@ const AssignSubject = () => {
         <Header>
           <div className="container">
             <div className="col-md-9">
-              <form>
+              <form onSubmit={submitHandler}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="mb-3">
@@ -21,6 +49,7 @@ const AssignSubject = () => {
                         type="text"
                         name="username"
                         className="form-control"
+                        ref={subjectCodeRef}
                       />
                     </div>
                   </div>
@@ -37,6 +66,8 @@ const AssignSubject = () => {
                     </div>
                   </div>
                 </div>
+                <button className="button">Submit</button>
+                <button className="button">Back</button>
               </form>
             </div>
           </div>
