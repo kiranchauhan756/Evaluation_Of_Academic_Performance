@@ -19,6 +19,7 @@ public class SubjectController {
     @Autowired
     private SubjectServiceI subjectService;
 
+
     @PostMapping("/addSubject")
     public ResponseEntity<Subject> addSubject(@RequestBody Subject subject) {
         Subject user1 = this.subjectService.addSubject(subject);
@@ -56,4 +57,29 @@ public class SubjectController {
         }
         return ResponseEntity.of(Optional.of(subject));
     }
+
+    @PutMapping("/updateMarks/{subjectCode}")
+    public ResponseEntity<Subject> updateMarks(@PathVariable String subjectCode, @RequestBody Subject subject) {
+        Subject subject1 = this.subjectService.updateMarks(subjectCode, subject);
+        System.out.println(subject1.getAssignmentMarks());
+        if (subject1 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
+    }
+
+
+    @PutMapping("/updateAssignments/{subjectCode}")
+    public ResponseEntity<Subject> updateAssignments(@PathVariable String subjectCode, @RequestBody Subject subject) {
+        Subject subject1 = this.subjectService.updateAssignments(subjectCode, subject);
+
+        if (subject1 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
+    }
+
+
+
+
 }

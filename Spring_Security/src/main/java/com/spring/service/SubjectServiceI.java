@@ -12,4 +12,7 @@ public interface SubjectServiceI{
     Subject addSubject(Subject subject);
 
     Subject findSubject(String subjectCode);
+
+    Subject updateMarks(String subjectCode, Subject subject);
+    Subject updateAssignments(String subjectCode, Subject subject);
 }

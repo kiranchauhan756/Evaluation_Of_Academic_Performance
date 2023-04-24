@@ -44,4 +44,24 @@ public class SubjectService implements SubjectServiceI {
         Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
         return subject;
     }
+
+    @Override
+    public Subject updateMarks(String subjectCode, Subject subject) {
+        Subject subject1=this.subjectRepository.findBySubjectCode(subjectCode);
+        subject1.setExamMarks(subject.getExamMarks());
+        subject1.setMaxExamMarks(subject.getMaxExamMarks());
+        this.subjectRepository.save(subject1);
+        return subject1;
+    }
+
+    @Override
+    public Subject updateAssignments(String subjectCode, Subject subject) {
+        Subject subject1=this.subjectRepository.findBySubjectCode(subjectCode);
+        subject1.setAssignmentMarks(subject.getAssignmentMarks());
+        subject1.setMaxAssignmentMarks(subject.getMaxAssignmentMarks());
+        this.subjectRepository.save(subject1);
+        return subject1;
+    }
+
+
 }

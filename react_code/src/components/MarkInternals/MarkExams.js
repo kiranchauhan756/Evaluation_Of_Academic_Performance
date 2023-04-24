@@ -7,6 +7,22 @@ import { Link, useParams } from "react-router-dom";
 const MarkExams = () => {
   const { email } = useParams();
   const [userData, setUserdata] = useState([]);
+  // const [userMarks,setUserMarks]=useState([]);
+
+  // useEffect(() => {
+  //   const request = {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(),
+  //   };
+  //   fetch("http://localhost:8080/student/getAllSubjects/" + email, request)
+  //     .then((response) => response.json())
+  //     .then((detail) => {
+  //       setUserdata(detail);
+  //     });
+  // }, []);
 
   useEffect(() => {
     const request = {
@@ -32,7 +48,7 @@ const MarkExams = () => {
             <div className="row">
               <div className="col-md-9">
                 <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link id="route" to={"/student"} className="button">
+                  <Link id="route" to={"/mark"} className="button">
                     Back
                   </Link>
                   <br />
