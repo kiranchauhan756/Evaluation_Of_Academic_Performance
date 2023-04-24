@@ -116,15 +116,8 @@ const Marks = () => {
                           to={"/showSubject/" + userData.email}
                           className="btn btn-warning"
                         >
-                          Assign Subjects
+                          Show Subjects
                         </Link>
-                        &nbsp; &nbsp;
-                        <button
-                          onClick={() => alert(userData.email)}
-                          className="btn btn-warning"
-                        >
-                          Exam Marks
-                        </button>
                       </td>
                     </tr>
                   ))}

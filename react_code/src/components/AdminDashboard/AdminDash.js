@@ -40,22 +40,6 @@ export default function AdminDash() {
                 </Item>
               </NavLink>
 
-              <NavLink to="/addSubject">
-                <Item>
-                  <IconContainer>
-                    <Icon src={Exam} />
-                  </IconContainer>
-                  <IconTitle>Add Subjects</IconTitle>
-                </Item>
-              </NavLink>
-              <NavLink to="/marks">
-                <Item>
-                  <IconContainer>
-                    <Icon src={Exam} />
-                  </IconContainer>
-                  <IconTitle>Mark Internals</IconTitle>
-                </Item>
-              </NavLink>
               <NavLink to="/student">
                 <Item>
                   <IconContainer>
@@ -64,18 +48,36 @@ export default function AdminDash() {
                   <IconTitle>Add Student</IconTitle>
                 </Item>
               </NavLink>
+
+              <NavLink to="/addSubject">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Exam} />
+                  </IconContainer>
+                  <IconTitle>Add Subjects</IconTitle>
+                </Item>
+              </NavLink>
+
+              <NavLink to="/show">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Exam} />
+                  </IconContainer>
+                  <IconTitle>Assign Subjects</IconTitle>
+                </Item>
+              </NavLink>
               <Item>
                 <IconContainer>
                   <Icon src={Attendance} />
                 </IconContainer>
                 <IconTitle>Mark Attendance</IconTitle>
               </Item>
-              <NavLink to="/assignment">
+              <NavLink to="/mark">
                 <Item>
                   <IconContainer>
                     <Icon src={Assignment} />
                   </IconContainer>
-                  <IconTitle>Mark Assignments</IconTitle>
+                  <IconTitle>Mark Internals</IconTitle>
                 </Item>
               </NavLink>
               <NavLink to="/report">

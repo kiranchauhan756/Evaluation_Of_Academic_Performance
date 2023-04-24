@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
 const AssignSubject = () => {
   const { email } = useParams();
   const subjectCodeRef = useRef("");
+  const navigate = useNavigate();
 
   async function submitHandler() {
     const item = {
@@ -32,6 +33,9 @@ const AssignSubject = () => {
         console.log("successfull");
       }
     });
+  }
+  function handleBack() {
+    navigate("/showSubject/" + email);
   }
   return (
     <div>
@@ -67,7 +71,9 @@ const AssignSubject = () => {
                   </div>
                 </div>
                 <button className="button">Submit</button>
-                <button className="button">Back</button>
+                <button className="button" onClick={handleBack}>
+                  Back
+                </button>
               </form>
             </div>
           </div>

@@ -62,6 +62,9 @@ function ShowSubject() {
                   >
                     Add More
                   </Link>
+                  <Link id="route" to={`/show`} className="button">
+                    Back
+                  </Link>
                 </div>
                 <br />
                 <br />

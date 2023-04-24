@@ -79,13 +79,12 @@ function AddStudent() {
                             Delete
                           </button>
                           &nbsp; &nbsp;
-                          <button
-                            onClick={() => alert(userData.email)}
+                          <Link
+                            to={"/showSub/" + userData.email}
                             className="btn btn-warning"
                           >
-                            {" "}
                             Show Subjects
-                          </button>
+                          </Link>
                         </td>
                       </tr>
                     ))}
