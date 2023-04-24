@@ -14,9 +14,6 @@ public class Subject {
     @Column(name = "SUB_NAME", nullable = false)
     private String subjectName;
 
-
-
-
     public String getSubjectCode() {
         return subjectCode;
     }

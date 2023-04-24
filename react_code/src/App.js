@@ -15,9 +15,11 @@ import ShowSub from "./components/AddStudent/ShowSub";
 import AssignSubject from "./components/AssignSubjects/AssignSubject";
 import Subjects from "./components/AddSubject/Subjects";
 import Show from "./components/AssignSubjects/Show";
-import Assignment from "./components/MarkAssignment/Assignment";
+import MarkAssignment from "./components/MarkInternals/MarkAssignment";
+import MarkExams from "./components/MarkInternals/MarkExams";
 import Report from "./components/GenerateReport/Report";
 import "bootstrap/dist/css/bootstrap.min.css";
+import MarkInternals from "./components/MarkInternals/MarkInternals";
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
               <Route exact="true" path="/contact" element={<Contact />} />
               <Route exact="true" path="/addStudent" element={<Student />} />
               <Route exact="true" path="/addSubject" element={<AddSubject />} />
+              <Route exact="true" path="/mark" element={<MarkInternals />} />
               <Route
                 exact="true"
                 path="/showSubject/:email"
@@ -61,7 +64,16 @@ function App() {
                 path="/editSubject/:subjectCode"
                 element={<EditSubject />}
               />
-              <Route exact="true" path="/assignment" element={<Assignment />} />
+              <Route
+                exact="true"
+                path="/markAssignment"
+                element={<MarkAssignment />}
+              />
+              <Route
+                exact="true"
+                path="/markExams/:email"
+                element={<MarkExams />}
+              />
               <Route exact="true" path="/report" element={<Report />} />
             </Routes>
           </div>
