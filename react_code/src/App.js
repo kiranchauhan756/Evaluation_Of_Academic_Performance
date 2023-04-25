@@ -20,6 +20,8 @@ import MarkExams from "./components/MarkInternals/MarkExams";
 import Report from "./components/GenerateReport/Report";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MarkInternals from "./components/MarkInternals/MarkInternals";
+import EditExamMarks from "./components/MarkInternals/EditExamMarks";
+import EditAssignmentMarks from "./components/MarkInternals/EditAssignmentMarks";
 
 function App() {
   return (
@@ -61,7 +63,7 @@ function App() {
               />
               <Route
                 exact="true"
-                path="/editSubject/:subjectCode"
+                path="/editSubject/:subjectCode/:email"
                 element={<EditSubject />}
               />
               <Route
@@ -73,6 +75,16 @@ function App() {
                 exact="true"
                 path="/markExams/:email"
                 element={<MarkExams />}
+              />
+              <Route
+                exact="true"
+                path="/editExams/:subjectCode"
+                element={<EditExamMarks />}
+              />
+              <Route
+                exact="true"
+                path="/editAssigments/:subjectCode"
+                element={<EditAssignmentMarks />}
               />
               <Route exact="true" path="/report" element={<Report />} />
             </Routes>
