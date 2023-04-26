@@ -121,12 +121,12 @@ const MarkInternals = () => {
                           Exam Marks
                         </Link>
                         &nbsp; &nbsp;
-                        <button
-                          onClick={() => alert(userData.email)}
+                        <Link
+                          to={"/markAssignment/" + userData.email}
                           className="btn btn-warning"
                         >
                           Assignment Marks
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                   ))}

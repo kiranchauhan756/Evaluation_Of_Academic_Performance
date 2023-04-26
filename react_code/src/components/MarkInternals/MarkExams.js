@@ -65,6 +65,13 @@ const MarkExams = () => {
                             >
                               Update
                             </Link>
+                            &nbsp; &nbsp; &nbsp; &nbsp;
+                            <Link
+                              to={"/viewExams/" + userData.subjectCode}
+                              className="btn btn-warning"
+                            >
+                              View Marks
+                            </Link>
                           </td>
                         </tr>
                       ))}

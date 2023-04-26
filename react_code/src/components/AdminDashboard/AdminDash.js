@@ -31,7 +31,17 @@ export default function AdminDash() {
           </User>
           <Navbar>
             <Items>
-              <NavLink to="/AdminPro">
+              <NavLink
+                to="/AdminPro"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "#fff",
+                        background: "#7600dc",
+                      }
+                    : { color: "#545e6f", background: "#f0f0f0" }
+                }
+              >
                 <Item>
                   <IconContainer>
                     <Icon src={Board} />
