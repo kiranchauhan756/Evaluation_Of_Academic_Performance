@@ -1,10 +1,8 @@
 package com.spring.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +10,7 @@ import java.util.Set;
 @Table(name = "STUDENT")
 public class Student {
     @Id
-    @Column(name = "EMAIL",nullable = false)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     @Column(name = "FIRST_NAME")
@@ -80,7 +78,6 @@ public class Student {
 
     @Column(name = "PHONE_NUM")
     private String phone;
-
 
 
     @JsonBackReference

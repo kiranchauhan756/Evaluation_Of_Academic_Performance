@@ -49,7 +49,7 @@ public class SubjectService implements SubjectServiceI {
     @Override
     public Subject updateMarks(String subjectCode, Exams exams) {
         Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
-        subject.setExams(exams);
+       // subject.setExams(exams);
         this.subjectRepository.save(subject);
         return subject;
     }

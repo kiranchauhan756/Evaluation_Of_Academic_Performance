@@ -1,25 +1,16 @@
 package com.spring.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "SUBJECT")
 public class Subject {
     @Id
+    @Column(name="SUB_CODE")
     private String subjectCode;
-
+    @Column(name="SUB_NAME")
     private String subjectName;
-
-    private Exams exams;
-
-
-    public Exams getExams() {
-        return exams;
-    }
-
-    public void setExams(Exams exams) {
-        this.exams = exams;
-    }
 
 
     public String getSubjectCode() {

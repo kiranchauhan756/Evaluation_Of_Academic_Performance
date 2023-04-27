@@ -23,7 +23,7 @@ function AddStudent() {
   }
 
   function handleDelete(email) {
-    fetch(`http://localhost:8080/student/delAssignSubject/${email}`, {
+    fetch(`http://localhost:8080/student/deleteStudent/${email}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((resp) => {

@@ -1,13 +1,11 @@
 package com.spring.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Embeddable
+@Entity
 @Table(name = "EXAMS")
 public class Exams {
-
+    @Id
     @Column(name = "EXAM_TYPE")
     private String examType;
 
@@ -18,6 +16,8 @@ public class Exams {
     private int obtainedExamMarks;
 
 
+
+
     public int getMaxExamMarks() {
         return maxExamMarks;
     }
@@ -25,6 +25,7 @@ public class Exams {
     public void setMaxExamMarks(int maxExamMarks) {
         this.maxExamMarks = maxExamMarks;
     }
+
 
     public int getObtainedExamMarks() {
         return obtainedExamMarks;
