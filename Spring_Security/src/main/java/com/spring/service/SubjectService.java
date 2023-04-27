@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import com.spring.entities.Exams;
 import com.spring.entities.Subject;
 import com.spring.repo.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,22 +47,22 @@ public class SubjectService implements SubjectServiceI {
     }
 
     @Override
-    public Subject updateMarks(String subjectCode, Subject subject) {
-        Subject subject1=this.subjectRepository.findBySubjectCode(subjectCode);
-        subject1.setExamMarks(subject.getExamMarks());
-        subject1.setMaxExamMarks(subject.getMaxExamMarks());
-        this.subjectRepository.save(subject1);
-        return subject1;
+    public Subject updateMarks(String subjectCode, Exams exams) {
+        Subject subject=this.subjectRepository.findBySubjectCode(subjectCode);
+        subject.setExams(exams);
+        this.subjectRepository.save(subject);
+        return subject;
     }
 
-    @Override
-    public Subject updateAssignments(String subjectCode, Subject subject) {
-        Subject subject1=this.subjectRepository.findBySubjectCode(subjectCode);
-        subject1.setAssignmentMarks(subject.getAssignmentMarks());
-        subject1.setMaxAssignmentMarks(subject.getMaxAssignmentMarks());
-        this.subjectRepository.save(subject1);
-        return subject1;
-    }
+//
+//    @Override
+//    public Subject updateAssignments(String subjectCode, Subject subject) {
+//        Subject subject1=this.subjectRepository.findBySubjectCode(subjectCode);
+//        subject1.setAssignmentMarks(subject.getAssignmentMarks());
+//        subject1.setMaxAssignmentMarks(subject.getMaxAssignmentMarks());
+//        this.subjectRepository.save(subject1);
+//        return subject1;
+//    }
 
 
 }

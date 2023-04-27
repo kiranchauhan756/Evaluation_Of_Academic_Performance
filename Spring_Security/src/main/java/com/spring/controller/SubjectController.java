@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import com.spring.entities.Exams;
 import com.spring.entities.Subject;
 import com.spring.service.SubjectServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,25 +60,26 @@ public class SubjectController {
     }
 
     @PutMapping("/updateMarks/{subjectCode}")
-    public ResponseEntity<Subject> updateMarks(@PathVariable String subjectCode, @RequestBody Subject subject) {
-        Subject subject1 = this.subjectService.updateMarks(subjectCode, subject);
-        System.out.println(subject1.getAssignmentMarks());
+    public ResponseEntity<Subject> updateMarks(@PathVariable String subjectCode, @RequestBody Exams exams ) {
+        Subject subject1 = this.subjectService.updateMarks(subjectCode, exams);
         if (subject1 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
     }
 
+//
+//    @PutMapping("/updateAssignments/{subjectCode}")
+//    public ResponseEntity<Subject> updateAssignments(@PathVariable String subjectCode, @RequestBody Subject subject) {
+//        Subject subject1 = this.subjectService.updateAssignments(subjectCode, subject);
+//
+//        if (subject1 == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
+//        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
+//    }
 
-    @PutMapping("/updateAssignments/{subjectCode}")
-    public ResponseEntity<Subject> updateAssignments(@PathVariable String subjectCode, @RequestBody Subject subject) {
-        Subject subject1 = this.subjectService.updateAssignments(subjectCode, subject);
 
-        if (subject1 == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
-    }
 
 
 

@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import com.spring.entities.Exams;
 import com.spring.entities.Subject;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface SubjectServiceI{
 
     Subject findSubject(String subjectCode);
 
-    Subject updateMarks(String subjectCode, Subject subject);
-    Subject updateAssignments(String subjectCode, Subject subject);
+    Subject updateMarks(String subjectCode, Exams exams);
+  //  Subject updateAssignments(String subjectCode, Subject subject);
 }
