@@ -26,6 +26,7 @@ import ViewMarks from "./components/MarkInternals/ViewMarks";
 import ViewAssignment from "./components/MarkInternals/ViewAssignment";
 import AddExam from "./components/MarkInternals/AddExam";
 import AddAssignment from "./components/MarkInternals/AddAssignment";
+import ShowAttendance from "./components/Attendance/ShowAttendance";
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
               />
               <Route exact="true" path="/subject" element={<Subjects />} />
               <Route exact="true" path="/show" element={<Show />} />
+              <Route
+                exact="true"
+                path="/showAttendance"
+                element={<ShowAttendance />}
+              />
               <Route
                 exact="true"
                 path="/assignSubject/:email"
