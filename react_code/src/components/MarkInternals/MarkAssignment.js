@@ -54,13 +54,13 @@ const MarkAssignment = () => {
                         <tr key={index}>
                           <td>{userData.subjectCode} </td>
                           <td>{userData.subjectName} </td>
-                          <td>{userData.assignmentMarks} </td>
-                          <td>{userData.maxAssignmentMarks} </td>
+                          <td>{userData.obtainedAssignMarks} </td>
+                          <td>{userData.maxAssignMarks} </td>
 
                           <td>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <Link
-                              to={"/editAssignments"}
+                              to={"/editAssignments/" + userData.id}
                               className="btn btn-warning"
                             >
                               Update

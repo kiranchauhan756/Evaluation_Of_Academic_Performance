@@ -4,27 +4,27 @@ import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 
 const EditAssignmentMark = () => {
-  const { subjectCode } = useParams();
+  const { id } = useParams();
+
+  const assignmentTypeRef = useRef("");
   const assignmentMarksRef = useRef("");
   const maxAssignmentMarksRef = useRef("");
   const navigate = useNavigate();
 
   async function submitVal() {
     const item = {
-      assignmentMarks: assignmentMarksRef.current.value,
-      maxAssignmentMarks: maxAssignmentMarksRef.current.value,
+      obtainedAssignMarks: assignmentMarksRef.current.value,
+      maxAssignMarks: maxAssignmentMarksRef.current.value,
+      assignType: assignmentTypeRef.current.value,
     };
-    await fetch(
-      "http://localhost:8080/subject/updateAssignment/" + subjectCode,
-      {
-        method: "PUT",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    await fetch("http://localhost:8080/subject/updateAssignments/" + id, {
+      method: "PUT",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
   }
   function handleBack() {
     navigate("/markExams/123@gmail.com");
@@ -37,6 +37,16 @@ const EditAssignmentMark = () => {
           <div className="col-md-9">
             <form onSubmit={submitVal}>
               <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label className="form-lable">Assignment Type</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref={assignmentTypeRef}
+                    />
+                  </div>
+                </div>
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label className="form-lable">Obtained Marks</label>
