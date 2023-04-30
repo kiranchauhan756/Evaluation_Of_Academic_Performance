@@ -42,6 +42,7 @@ const Show = () => {
       <React.Fragment>
         <AdminDash />
         <Header>
+          <p>Assign Subjects</p>
           <div className="container">
             <div className="col-md-9">
               <form onSubmit={submitHandler}>

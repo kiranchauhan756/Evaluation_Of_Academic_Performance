@@ -76,12 +76,14 @@ export default function AdminDash() {
                   <IconTitle>Assign Subjects</IconTitle>
                 </Item>
               </NavLink>
-              <Item>
-                <IconContainer>
-                  <Icon src={Attendance} />
-                </IconContainer>
-                <IconTitle>Mark Attendance</IconTitle>
-              </Item>
+              <NavLink to="/showAttendance">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Attendance} />
+                  </IconContainer>
+                  <IconTitle>Mark Attendance</IconTitle>
+                </Item>
+              </NavLink>
               <NavLink to="/mark">
                 <Item>
                   <IconContainer>

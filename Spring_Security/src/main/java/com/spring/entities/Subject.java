@@ -7,11 +7,88 @@ import java.util.List;
 @Table(name = "SUBJECT")
 public class Subject {
     @Id
-    @Column(name="SUB_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "SUB_CODE")
     private String subjectCode;
-    @Column(name="SUB_NAME")
+    @Column(name = "SUB_NAME")
     private String subjectName;
 
+    @Column(name = "EXAM_TYPE")
+    private String examType;
+
+    @Column(name = "MAX_EXAM_MARKS")
+    private int maxExamMarks;
+
+    @Column(name = "OBT_EXAM_MARKS")
+    private int obtainedExamMarks;
+
+    @Column(name = "ASS_TYPE")
+    private String assignType;
+
+    @Column(name = "MAX_ASS_MARKS")
+    private int maxAssignMarks;
+
+    @Column(name = "OBT_ASSIGN_MARKS")
+    private int obtainedAssignMarks;
+
+    public String getAssignType() {
+        return assignType;
+    }
+
+    public void setAssignType(String assignType) {
+        this.assignType = assignType;
+    }
+
+    public int getMaxAssignMarks() {
+        return maxAssignMarks;
+    }
+
+    public void setMaxAssignMarks(int maxAssignMarks) {
+        this.maxAssignMarks = maxAssignMarks;
+    }
+
+    public int getObtainedAssignMarks() {
+        return obtainedAssignMarks;
+    }
+
+    public void setObtainedAssignMarks(int obtainedAssignMarks) {
+        this.obtainedAssignMarks = obtainedAssignMarks;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+    public String getExamType() {
+        return examType;
+    }
+
+    public void setExamType(String examType) {
+        this.examType = examType;
+    }
+
+    public int getMaxExamMarks() {
+        return maxExamMarks;
+    }
+
+    public void setMaxExamMarks(int maxExamMarks) {
+        this.maxExamMarks = maxExamMarks;
+    }
+
+    public int getObtainedExamMarks() {
+        return obtainedExamMarks;
+    }
+
+    public void setObtainedExamMarks(int obtainedExamMarks) {
+        this.obtainedExamMarks = obtainedExamMarks;
+    }
 
     public String getSubjectCode() {
         return subjectCode;

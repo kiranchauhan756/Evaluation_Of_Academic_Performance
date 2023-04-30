@@ -45,6 +45,7 @@ const MarkExams = () => {
                       <tr>
                         <th>Subject Code</th>
                         <th>Subject Name</th>
+                        <th>Exam Type</th>
                         <th>Optained Marks</th>
                         <th>Maximum Marks</th>
                       </tr>
@@ -54,7 +55,9 @@ const MarkExams = () => {
                         <tr key={index}>
                           <td>{userData.subjectCode} </td>
                           <td>{userData.subjectName} </td>
-                          <td>{userData.examMarks} </td>
+                          <td>{userData.examType}</td>
+                          <td>{userData.obtainedExamMarks} </td>
+
                           <td>{userData.maxExamMarks} </td>
 
                           <td>

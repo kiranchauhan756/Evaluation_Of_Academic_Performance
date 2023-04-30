@@ -17,6 +17,7 @@ import Subjects from "./components/AddSubject/Subjects";
 import Show from "./components/AssignSubjects/Show";
 import MarkAssignment from "./components/MarkInternals/MarkAssignment";
 import MarkExams from "./components/MarkInternals/MarkExams";
+import MarkAttendance from "./components/Attendance/MarkAttendance";
 import Report from "./components/GenerateReport/Report";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MarkInternals from "./components/MarkInternals/MarkInternals";
@@ -75,6 +76,11 @@ function App() {
                 exact="true"
                 path="/editSubject/:subjectCode"
                 element={<EditSubject />}
+              />
+              <Route
+                exact="true"
+                path="/markAttendance/:email"
+                element={<MarkAttendance />}
               />
               <Route
                 exact="true"

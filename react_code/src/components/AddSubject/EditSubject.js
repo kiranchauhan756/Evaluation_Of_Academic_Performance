@@ -49,6 +49,7 @@ const EditSubject = () => {
             <form onSubmit={submitVal}>
               <div className="row">
                 <div className="col-md-6">
+                  <h1>Edit subject</h1>
                   <div className="mb-3">
                     <label className="form-lable">Subject Code</label>
                     <input
