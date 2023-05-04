@@ -23,7 +23,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MarkInternals from "./components/MarkInternals/MarkInternals";
 import EditExamMarks from "./components/MarkInternals/EditExamMarks";
 import EditAssignmentMarks from "./components/MarkInternals/EditAssignmentMarks";
-import ViewMarks from "./components/MarkInternals/ViewMarks";
 import ViewAssignment from "./components/MarkInternals/ViewAssignment";
 import AddExam from "./components/MarkInternals/AddExam";
 import AddAssignment from "./components/MarkInternals/AddAssignment";
@@ -113,11 +112,7 @@ function App() {
                 path="/addAssignment/:subjectCode"
                 element={<AddAssignment />}
               />
-              <Route
-                exact="true"
-                path="/viewExams/:subjectCode"
-                element={<ViewMarks />}
-              />
+
               <Route
                 exact="true"
                 path="/addExams/:subjectCode"

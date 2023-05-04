@@ -55,7 +55,7 @@ public class SubjectService implements SubjectServiceI {
         Subject subject=this.subjectRepository.findById( id);
         subject.setExamType(examMarks.getExamType());
         subject.setMaxExamMarks(examMarks.getMaxExamMarks());
-        subject.setObtainedExamMarks(subject.getObtainedExamMarks());
+        subject.setObtainedExamMarks(examMarks.getObtainedExamMarks());
         this.subjectRepository.save(subject);
         return subject;
     }

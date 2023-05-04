@@ -3,17 +3,8 @@ package com.spring.request;
 public class AssignmentMarks {
 
     private String assignType;
-    private int  maxAssignMarks;
-
-    public int  getObtainedAssignMarks() {
-        return obtainedAssignMarks;
-    }
-
-    public void setObtainedAssignMarks(int obtainedAssignMarks) {
-        this.obtainedAssignMarks = obtainedAssignMarks;
-    }
-
     private int obtainedAssignMarks;
+    private int maxAssignMarks;
 
     public String getAssignType() {
         return assignType;
@@ -23,7 +14,15 @@ public class AssignmentMarks {
         this.assignType = assignType;
     }
 
-    public int  getMaxAssignMarks() {
+    public int getObtainedAssignMarks() {
+        return obtainedAssignMarks;
+    }
+
+    public void setObtainedAssignMarks(int obtainedAssignMarks) {
+        this.obtainedAssignMarks = obtainedAssignMarks;
+    }
+
+    public int getMaxAssignMarks() {
         return maxAssignMarks;
     }
 

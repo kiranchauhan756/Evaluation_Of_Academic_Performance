@@ -50,7 +50,7 @@ const MarkExams = () => {
                         <th>Subject Code</th>
                         <th>Subject Name</th>
                         <th>Exam Type</th>
-                        <th>Optained Marks</th>
+                        <th>Obtained Marks</th>
                         <th>Maximum Marks</th>
                       </tr>
                     </thead>
@@ -71,13 +71,6 @@ const MarkExams = () => {
                               className="btn btn-warning"
                             >
                               Update
-                            </Link>
-                            &nbsp; &nbsp; &nbsp; &nbsp;
-                            <Link
-                              to={"/viewExams/" + userData.subjectCode}
-                              className="btn btn-warning"
-                            >
-                              View Marks
                             </Link>
                           </td>
                         </tr>

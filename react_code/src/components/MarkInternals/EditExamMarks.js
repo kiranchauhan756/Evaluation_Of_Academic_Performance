@@ -5,14 +5,16 @@ import styled from "styled-components";
 
 const EditExamMarks = () => {
   const { subjectCode } = useParams();
-  const examMarksRef = useRef("");
+  const obtainedExamMarksRef = useRef("");
   const maxExamMarksRef = useRef("");
+  const examTypeRef = useRef("");
   const navigate = useNavigate();
 
   async function submitVal() {
     const item = {
-      examMarks: examMarksRef.current.value,
+      obtainedExamMarks: obtainedExamMarksRef.current.value,
       maxExamMarks: maxExamMarksRef.current.value,
+      examType: examTypeRef.current.value,
     };
     await fetch("http://localhost:8080/subject/updateMarks/" + subjectCode, {
       method: "PUT",
@@ -36,11 +38,21 @@ const EditExamMarks = () => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="mb-3">
+                    <label className="form-lable">Exam type</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      ref={examTypeRef}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
                     <label className="form-lable">Obtained Marks</label>
                     <input
                       type="text"
                       className="form-control"
-                      ref={examMarksRef}
+                      ref={obtainedExamMarksRef}
                     />
                   </div>
                 </div>

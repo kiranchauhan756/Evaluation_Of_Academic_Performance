@@ -67,6 +67,7 @@ public class SubjectController {
         if (subject1 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
     }
 

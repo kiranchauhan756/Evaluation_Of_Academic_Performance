@@ -1,42 +1,30 @@
-import React from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from "react";
 
 function ViewAssignment() {
+  // form submit
+  const handleImageChange = (e) => {
+    let reader = new FileReader();
+    const files = e.target.files;
+
+    if (files.length) {
+      const file = files[0];
+      console.log(file);
+      console.log(reader);
+    }
+  };
+
   return (
     <div>
       <React.Fragment>
         <AdminDash />
         <Header>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link id="route" to={`/assignSubject/`} className="button">
-                    Add More
-                  </Link>
-                  <Link id="route" to={`/show`} className="button">
-                    Back
-                  </Link>
-                </div>
-                <br />
-                <br />
-                <h5>subjects of student are: </h5>
-                <table className="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Subject Code</th>
-                      <th>Assignment Type</th>
-                      <th>Assignment Marks</th>
-                      <th>Max Assignment Marks</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <input
+            type="file"
+            onChange={handleImageChange}
+            // accept="image/png, image/jpeg"
+          />
         </Header>
       </React.Fragment>
     </div>

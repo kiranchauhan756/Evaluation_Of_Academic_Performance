@@ -4,30 +4,32 @@ import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 
 const EditAssignmentMark = () => {
-  const { id } = useParams();
-
-  const assignmentTypeRef = useRef("");
-  const assignmentMarksRef = useRef("");
-  const maxAssignmentMarksRef = useRef("");
+  const { subjectCode } = useParams();
+  const assignTypeRef = useRef("");
+  const obtainedAssignMarksRef = useRef("");
+  const maxAssignMarksRef = useRef("");
   const navigate = useNavigate();
 
   async function submitVal() {
     const item = {
-      obtainedAssignMarks: assignmentMarksRef.current.value,
-      maxAssignMarks: maxAssignmentMarksRef.current.value,
-      assignType: assignmentTypeRef.current.value,
+      obtainedAssignMarks: obtainedAssignMarksRef.current.value,
+      maxAssignMarks: maxAssignMarksRef.current.value,
+      assignType: assignTypeRef.current.value,
     };
-    await fetch("http://localhost:8080/subject/updateAssignments/" + id, {
-      method: "PUT",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    await fetch(
+      "http://localhost:8080/subject/updateAssignments/" + subjectCode,
+      {
+        method: "PUT",
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
   }
   function handleBack() {
-    navigate("/markExams/123@gmail.com");
+    navigate("/markAssignment/123@gmail.com");
   }
   return (
     <div>
@@ -43,7 +45,7 @@ const EditAssignmentMark = () => {
                     <input
                       type="text"
                       className="form-control"
-                      ref={assignmentTypeRef}
+                      ref={assignTypeRef}
                     />
                   </div>
                 </div>
@@ -53,7 +55,7 @@ const EditAssignmentMark = () => {
                     <input
                       type="text"
                       className="form-control"
-                      ref={assignmentMarksRef}
+                      ref={obtainedAssignMarksRef}
                     />
                   </div>
                 </div>
@@ -63,7 +65,7 @@ const EditAssignmentMark = () => {
                     <input
                       type="text"
                       className="form-control"
-                      ref={maxAssignmentMarksRef}
+                      ref={maxAssignMarksRef}
                     />
                   </div>
                 </div>

@@ -36,6 +36,9 @@ const MarkAssignment = () => {
                   <Link id="route" to={"/mark"} className="button">
                     Back
                   </Link>
+                  <Link id="route" to={"/"} className="button">
+                    Add More
+                  </Link>
                   <br />
                   <br />
 
@@ -45,6 +48,7 @@ const MarkAssignment = () => {
                       <tr>
                         <th>Subject Code</th>
                         <th>Subject Name</th>
+                        <th>Assignment Type</th>
                         <th> Assignment Marks</th>
                         <th>Max Assignment Marks</th>
                       </tr>
@@ -54,6 +58,7 @@ const MarkAssignment = () => {
                         <tr key={index}>
                           <td>{userData.subjectCode} </td>
                           <td>{userData.subjectName} </td>
+                          <td>{userData.assignType}</td>
                           <td>{userData.obtainedAssignMarks} </td>
                           <td>{userData.maxAssignMarks} </td>
 
@@ -65,12 +70,12 @@ const MarkAssignment = () => {
                             >
                               Update
                             </Link>
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp;
                             <Link
                               to={"/viewAssignment/" + userData.subjectCode}
                               className="btn btn-warning"
                             >
-                              View Assignment
+                              View Submission
                             </Link>
                           </td>
                         </tr>
