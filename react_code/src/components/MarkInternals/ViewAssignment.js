@@ -1,30 +1,28 @@
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 import React from "react";
+import Assignment_1 from "../../assets/images/PDF/Assignment_1.pdf";
+import Assignment1_Ans from "../../assets/images/PDF/Assignment1_Ans.pdf";
 
 function ViewAssignment() {
   // form submit
-  const handleImageChange = (e) => {
-    let reader = new FileReader();
-    const files = e.target.files;
-
-    if (files.length) {
-      const file = files[0];
-      console.log(file);
-      console.log(reader);
-    }
-  };
 
   return (
     <div>
       <React.Fragment>
         <AdminDash />
         <Header>
-          <input
-            type="file"
-            onChange={handleImageChange}
-            // accept="image/png, image/jpeg"
-          />
+          <div>
+            <a href={Assignment_1} target="_blank" rel="noreferrer">
+              Assignment 1
+            </a>
+          </div>
+          <br></br>
+          <div>
+            <a href={Assignment1_Ans} target="_blank" rel="noreferrer">
+              Student Assignment
+            </a>{" "}
+          </div>
         </Header>
       </React.Fragment>
     </div>
