@@ -132,6 +132,7 @@ const Aside = styled.aside`
   height: 100vh;
   box-shadow: 9px 6px 46px -24px rgba(0, 0, 0, 0.75);
 `;
+
 const DivTitle = styled.div`
   padding: 15px;
   border-bottom: 1px solid #c0c0c0;
