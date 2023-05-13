@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AdminDashboard from "./components/AdminDashboard/AdminDash";
 import Home from "./components/Home/Home";
-
 import Contact from "./components/Contact/Contact";
 import AdminProfile from "./components/AdminDashboard/AdminProfile";
 import AddStudent from "./components/AddStudent/AddStudent";
@@ -18,13 +17,13 @@ import Show from "./components/AssignSubjects/Show";
 import MarkAssignment from "./components/MarkInternals/MarkAssignment";
 import MarkExams from "./components/MarkInternals/MarkExams";
 import MarkAttendance from "./components/Attendance/MarkAttendance";
-import Report from "./components/GenerateReport/Report";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MarkInternals from "./components/MarkInternals/MarkInternals";
 import EditExamMarks from "./components/MarkInternals/EditExamMarks";
 import EditAssignmentMarks from "./components/MarkInternals/EditAssignmentMarks";
 import ViewAssignment from "./components/MarkInternals/ViewAssignment";
 import AddExam from "./components/MarkInternals/AddExam";
+import Report from "./components/FinalReport/Report";
 import AddAssignment from "./components/MarkInternals/AddAssignment";
 import ShowAttendance from "./components/Attendance/ShowAttendance";
 
@@ -101,18 +100,18 @@ function App() {
                 path="/editAssignments/:subjectCode"
                 element={<EditAssignmentMarks />}
               />
-              <Route exact="true" path="/report" element={<Report />} />
-              <Route
-                exact="true"
-                path="/viewAssignment/:subjectCode"
-                element={<ViewAssignment />}
-              />
+
               <Route
                 exact="true"
                 path="/addAssignment/:subjectCode"
                 element={<AddAssignment />}
               />
-
+              <Route
+                exact="true"
+                path="/viewAssignment/:subjectCode"
+                element={<ViewAssignment />}
+              />
+              <Route exact="true" path="/report" element={<Report />} />
               <Route
                 exact="true"
                 path="/addExams/:subjectCode"

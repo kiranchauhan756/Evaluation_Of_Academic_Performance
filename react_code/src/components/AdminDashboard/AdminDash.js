@@ -97,7 +97,7 @@ export default function AdminDash() {
                   <IconContainer>
                     <Icon src={Report} />
                   </IconContainer>
-                  <IconTitle>Generate Report</IconTitle>
+                  <IconTitle>Final Report</IconTitle>
                 </Item>
               </NavLink>
               <Item>

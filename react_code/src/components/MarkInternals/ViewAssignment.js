@@ -3,10 +3,9 @@ import styled from "styled-components";
 import React from "react";
 import Assignment_1 from "../../assets/images/PDF/Assignment_1.pdf";
 import Assignment1_Ans from "../../assets/images/PDF/Assignment1_Ans.pdf";
+import { Link } from "react-router-dom";
 
 function ViewAssignment() {
-  // form submit
-
   return (
     <div>
       <React.Fragment>
@@ -23,6 +22,9 @@ function ViewAssignment() {
               Student Assignment
             </a>{" "}
           </div>
+          <Link id="route" to={"/markAssignment"} className="button">
+            Back
+          </Link>
         </Header>
       </React.Fragment>
     </div>
