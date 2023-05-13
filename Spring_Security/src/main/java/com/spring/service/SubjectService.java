@@ -18,7 +18,8 @@ public class SubjectService implements SubjectServiceI {
 
     @Override
     public List<Subject> getAllSubjects() {
-        return this.subjectRepository.findAll();
+
+        return this.subjectRepository.getUniqueSubject();
     }
 
     @Override
@@ -30,16 +31,16 @@ public class SubjectService implements SubjectServiceI {
     }
 
     @Override
-    public void deleteSubject(String subjectCode) {
+    public void deleteSubject(long id) {
 
-        Subject subject = this.subjectRepository.findBySubjectCode(subjectCode);
+        Subject subject = this.subjectRepository.findById(id);
         this.subjectRepository.delete(subject);
     }
+
 
     @Override
     public Subject addSubject(Subject subject) {
         Subject s=this.subjectRepository.findBySubjectCode(subject.getSubjectCode());
-        if(s!=null) return null;
             return this.subjectRepository.save(subject);
     }
 

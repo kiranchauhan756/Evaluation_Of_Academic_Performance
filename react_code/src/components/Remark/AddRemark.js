@@ -16,4 +16,5 @@ const Header = styled.div`
   left: 30%;
   top: 20%;
 `;
+
 export default AddRemark;

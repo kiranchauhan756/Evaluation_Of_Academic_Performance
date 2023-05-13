@@ -20,4 +20,9 @@ public interface SubjectRepository extends JpaRepository<Subject,String> {
     @Query("SELECT subject FROM Subject subject WHERE subject.assignType is not null" )
     List<Subject> getAllAssignmentMarks();
 
+    @Query("select subject from Subject subject group by subject.subjectCode")
+    List<Subject> getUniqueSubject();
+
+
+
 }

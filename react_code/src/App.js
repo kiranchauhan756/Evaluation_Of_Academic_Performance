@@ -114,7 +114,7 @@ function App() {
               <Route exact="true" path="/report" element={<Report />} />
               <Route
                 exact="true"
-                path="/addExams/:subjectCode"
+                path="/addExams/:email"
                 element={<AddExam />}
               />
             </Routes>

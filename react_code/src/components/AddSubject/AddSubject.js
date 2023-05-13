@@ -22,8 +22,8 @@ function AddSubject() {
     window.location.reload(false);
   }
 
-  function handleDelete(subjectCode) {
-    fetch(`http://localhost:8080/subject/deleteSubject/${subjectCode}`, {
+  function handleDelete(id) {
+    fetch(`http://localhost:8080/subject/deleteSubject/${id}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((resp) => {
@@ -70,7 +70,7 @@ function AddSubject() {
                           </Link>
                           &nbsp; &nbsp;
                           <button
-                            onClick={() => handleDelete(userData.subjectCode)}
+                            onClick={() => handleDelete(userData.id)}
                             className="btn btn-danger"
                           >
                             {" "}

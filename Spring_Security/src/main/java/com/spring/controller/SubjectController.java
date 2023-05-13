@@ -26,7 +26,7 @@ public class SubjectController {
     public ResponseEntity<Subject> addSubject(@RequestBody Subject subject) {
 
         Subject user1 = this.subjectService.addSubject(subject);
-          if(user1==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        if (user1 == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
 
@@ -39,9 +39,9 @@ public class SubjectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
     }
 
-    @DeleteMapping("/deleteSubject/{subjectCode}")
-    public void deleteSubject(@PathVariable String subjectCode) {
-        this.subjectService.deleteSubject(subjectCode);
+    @DeleteMapping("/deleteSubject/{id}")
+    public void deleteSubject(@PathVariable long id) {
+        this.subjectService.deleteSubject(id);
     }
 
     @GetMapping("/getAllSubjects")
@@ -53,9 +53,9 @@ public class SubjectController {
     }
 
     @GetMapping("/findSubject/{subjectCode}")
-    public ResponseEntity<Subject> findSubject(@PathVariable String subjectCode){
-        Subject subject=this.subjectService.findSubject(subjectCode);
-        if(subject==null){
+    public ResponseEntity<Subject> findSubject(@PathVariable String subjectCode) {
+        Subject subject = this.subjectService.findSubject(subjectCode);
+        if (subject == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.of(Optional.of(subject));
@@ -63,7 +63,7 @@ public class SubjectController {
 
     @PutMapping("/updateMarks/{id}")
     public ResponseEntity<Subject> updateMarks(@PathVariable long id, @RequestBody ExamMarks examMarks) {
-        Subject subject1 = this.subjectService.updateExams(id,examMarks);
+        Subject subject1 = this.subjectService.updateExams(id, examMarks);
         if (subject1 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -83,19 +83,18 @@ public class SubjectController {
     }
 
     @GetMapping("/getAllExamMarks")
-    public ResponseEntity<List<Subject>> getAllMarks(){
-        List<Subject> list=this.subjectService.getAllExamMarks();
+    public ResponseEntity<List<Subject>> getAllMarks() {
+        List<Subject> list = this.subjectService.getAllExamMarks();
         if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
 
     @GetMapping("/getAllAssignMarks")
-    public ResponseEntity<List<Subject>> getAllAssignments(){
-        List<Subject> list=this.subjectService.getAllAssignmentMarks();
+    public ResponseEntity<List<Subject>> getAllAssignments() {
+        List<Subject> list = this.subjectService.getAllAssignmentMarks();
         if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
-
 
 
 }

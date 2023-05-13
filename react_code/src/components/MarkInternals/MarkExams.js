@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 
 const MarkExams = () => {
   const { email } = useParams();
-
   const [userData, setUserdata] = useState([]);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const MarkExams = () => {
             <div className="row">
               <div className="col-md-9">
                 <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link id="route" to={""} className="button">
+                  <Link id="route" to={"/addExams/" + email} className="button">
                     Add Exams
                   </Link>
                   <Link id="route" to={"/mark"} className="button">
