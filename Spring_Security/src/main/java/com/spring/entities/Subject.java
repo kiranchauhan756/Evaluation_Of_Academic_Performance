@@ -5,23 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "SUBJECT")
 public class Subject {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "SUB_CODE")
     private String subjectCode;
     @Column(name = "SUB_NAME")
     private String subjectName;
-
-    @Column(name = "EXAM_TYPE")
-    private String examType;
-
-    @Column(name = "MAX_EXAM_MARKS")
-    private int maxExamMarks;
-
-    @Column(name = "OBT_EXAM_MARKS")
-    private int obtainedExamMarks;
 
     @Column(name = "ASS_TYPE")
     private String assignType;
@@ -31,6 +23,14 @@ public class Subject {
 
     @Column(name = "OBT_ASSIGN_MARKS")
     private int obtainedAssignMarks;
+    @Column(name = "MAX_EXAM_MARKS")
+    private int maxExamMarks;
+
+    @Column(name = "OBT_EXAM_MARKS")
+    private int obtainedExamMarks;
+
+    @Column(name = "EXAM_TYPE")
+    private String examType;
 
     public String getAssignType() {
         return assignType;
@@ -54,14 +54,6 @@ public class Subject {
 
     public void setObtainedAssignMarks(int obtainedAssignMarks) {
         this.obtainedAssignMarks = obtainedAssignMarks;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
 
@@ -105,6 +97,14 @@ public class Subject {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
 

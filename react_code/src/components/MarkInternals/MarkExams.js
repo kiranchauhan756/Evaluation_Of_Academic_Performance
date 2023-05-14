@@ -60,9 +60,7 @@ const MarkExams = () => {
                           <td>{userData.subjectName} </td>
                           <td>{userData.examType}</td>
                           <td>{userData.obtainedExamMarks} </td>
-
                           <td>{userData.maxExamMarks} </td>
-
                           <td>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <Link
