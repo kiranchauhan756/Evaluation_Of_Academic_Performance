@@ -3,8 +3,7 @@ import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
-const MarkInternals = () => {
+const ShowAttendance = () => {
   const courseRef = useRef("");
   const semesterRef = useRef("");
   const branchRef = useRef("");
@@ -43,11 +42,10 @@ const MarkInternals = () => {
       <React.Fragment>
         <AdminDash />
         <Header>
-          {" "}
+          <p>Attendance</p>
           <div className="container">
             <div className="col-md-9">
               <form onSubmit={submitHandler}>
-                <p>Mark internals</p>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="mb-3">
@@ -116,17 +114,10 @@ const MarkInternals = () => {
                       <td>{userData.course} </td>
                       <td>
                         <Link
-                          to={"/markExams/" + userData.email}
+                          to={"/markAttendance/" + userData.email}
                           className="btn btn-warning"
                         >
-                          Exam Marks
-                        </Link>
-                        &nbsp; &nbsp;
-                        <Link
-                          to={"/markAssignment/" + userData.email}
-                          className="btn btn-warning"
-                        >
-                          Assignment Marks
+                          Show Attendance
                         </Link>
                       </td>
                     </tr>
@@ -146,4 +137,4 @@ const Header = styled.div`
   top: 10%;
 `;
 
-export default MarkInternals;
+export default ShowAttendance;

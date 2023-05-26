@@ -88,7 +88,6 @@ public class Student {
             inverseJoinColumns = {@JoinColumn(name = "subject_id", nullable = true)})
     private Set<Subject> subjects = new HashSet<>();
 
-
     public String getEmail() {
         return email;
     }

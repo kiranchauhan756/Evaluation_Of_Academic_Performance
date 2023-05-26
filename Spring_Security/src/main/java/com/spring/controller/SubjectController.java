@@ -1,7 +1,8 @@
 package com.spring.controller;
 
-import com.spring.entities.Exams;
 import com.spring.entities.Subject;
+import com.spring.request.AssignmentMarks;
+import com.spring.request.ExamMarks;
 import com.spring.service.SubjectServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,9 @@ public class SubjectController {
 
     @PostMapping("/addSubject")
     public ResponseEntity<Subject> addSubject(@RequestBody Subject subject) {
-        Subject user1 = this.subjectService.addSubject(subject);
 
+        Subject user1 = this.subjectService.addSubject(subject);
+        if (user1 == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
 
@@ -37,9 +39,9 @@ public class SubjectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
     }
 
-    @DeleteMapping("/deleteSubject/{subjectCode}")
-    public void deleteSubject(@PathVariable String subjectCode) {
-        this.subjectService.deleteSubject(subjectCode);
+    @DeleteMapping("/deleteSubject/{id}")
+    public void deleteSubject(@PathVariable long id) {
+        this.subjectService.deleteSubject(id);
     }
 
     @GetMapping("/getAllSubjects")
@@ -51,37 +53,48 @@ public class SubjectController {
     }
 
     @GetMapping("/findSubject/{subjectCode}")
-    public ResponseEntity<Subject> findSubject(@PathVariable String subjectCode){
-        Subject subject=this.subjectService.findSubject(subjectCode);
-        if(subject==null){
+    public ResponseEntity<Subject> findSubject(@PathVariable String subjectCode) {
+        Subject subject = this.subjectService.findSubject(subjectCode);
+        if (subject == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.of(Optional.of(subject));
     }
 
-    @PutMapping("/updateMarks/{subjectCode}")
-    public ResponseEntity<Subject> updateMarks(@PathVariable String subjectCode, @RequestBody Exams exams ) {
-        Subject subject1 = this.subjectService.updateMarks(subjectCode, exams);
+    @PutMapping("/updateMarks/{id}")
+    public ResponseEntity<Subject> updateMarks(@PathVariable long id, @RequestBody ExamMarks examMarks) {
+        Subject subject1 = this.subjectService.updateExams(id, examMarks);
+        if (subject1 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
+    }
+
+
+    @PutMapping("/updateAssignments/{id}")
+    public ResponseEntity<Subject> updateAssignments(@PathVariable long id, @RequestBody AssignmentMarks assignmentMarks) {
+        Subject subject1 = this.subjectService.updateAssignments(id, assignmentMarks);
+
         if (subject1 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
     }
 
-//
-//    @PutMapping("/updateAssignments/{subjectCode}")
-//    public ResponseEntity<Subject> updateAssignments(@PathVariable String subjectCode, @RequestBody Subject subject) {
-//        Subject subject1 = this.subjectService.updateAssignments(subjectCode, subject);
-//
-//        if (subject1 == null) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//        return ResponseEntity.status(HttpStatus.CREATED).body(subject1);
-//    }
+    @GetMapping("/getAllExamMarks")
+    public ResponseEntity<List<Subject>> getAllMarks() {
+        List<Subject> list = this.subjectService.getAllExamMarks();
+        if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(list);
+    }
 
-
-
-
+    @GetMapping("/getAllAssignMarks")
+    public ResponseEntity<List<Subject>> getAllAssignments() {
+        List<Subject> list = this.subjectService.getAllAssignmentMarks();
+        if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(list);
+    }
 
 
 }

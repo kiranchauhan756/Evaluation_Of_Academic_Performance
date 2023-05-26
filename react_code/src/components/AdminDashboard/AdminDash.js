@@ -76,12 +76,14 @@ export default function AdminDash() {
                   <IconTitle>Assign Subjects</IconTitle>
                 </Item>
               </NavLink>
-              <Item>
-                <IconContainer>
-                  <Icon src={Attendance} />
-                </IconContainer>
-                <IconTitle>Mark Attendance</IconTitle>
-              </Item>
+              <NavLink to="/showAttendance">
+                <Item>
+                  <IconContainer>
+                    <Icon src={Attendance} />
+                  </IconContainer>
+                  <IconTitle>Mark Attendance</IconTitle>
+                </Item>
+              </NavLink>
               <NavLink to="/mark">
                 <Item>
                   <IconContainer>
@@ -95,7 +97,7 @@ export default function AdminDash() {
                   <IconContainer>
                     <Icon src={Report} />
                   </IconContainer>
-                  <IconTitle>Generate Report</IconTitle>
+                  <IconTitle>Final Report</IconTitle>
                 </Item>
               </NavLink>
               <Item>
@@ -130,6 +132,7 @@ const Aside = styled.aside`
   height: 100vh;
   box-shadow: 9px 6px 46px -24px rgba(0, 0, 0, 0.75);
 `;
+
 const DivTitle = styled.div`
   padding: 15px;
   border-bottom: 1px solid #c0c0c0;

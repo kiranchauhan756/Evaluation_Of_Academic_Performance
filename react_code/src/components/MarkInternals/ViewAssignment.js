@@ -1,6 +1,8 @@
-import React from "react";
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
+import React from "react";
+import Assignment_1 from "../../assets/images/PDF/Assignment_1.pdf";
+import Assignment1_Ans from "../../assets/images/PDF/Assignment1_Ans.pdf";
 import { Link } from "react-router-dom";
 
 function ViewAssignment() {
@@ -9,34 +11,20 @@ function ViewAssignment() {
       <React.Fragment>
         <AdminDash />
         <Header>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="d-grid d-md-flex justify-content-md-end mb-3">
-                  <Link id="route" to={`/assignSubject/`} className="button">
-                    Add More
-                  </Link>
-                  <Link id="route" to={`/show`} className="button">
-                    Back
-                  </Link>
-                </div>
-                <br />
-                <br />
-                <h5>subjects of student are: </h5>
-                <table className="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Subject Code</th>
-                      <th>Assignment Type</th>
-                      <th>Assignment Marks</th>
-                      <th>Max Assignment Marks</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
+          <div>
+            <a href={Assignment_1} target="_blank" rel="noreferrer">
+              Assignment 1
+            </a>
           </div>
+          <br></br>
+          <div>
+            <a href={Assignment1_Ans} target="_blank" rel="noreferrer">
+              Student Assignment
+            </a>{" "}
+          </div>
+          <Link id="route" to={"/markAssignment"} className="button">
+            Back
+          </Link>
         </Header>
       </React.Fragment>
     </div>

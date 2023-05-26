@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AdminDashboard from "./components/AdminDashboard/AdminDash";
 import Home from "./components/Home/Home";
-
 import Contact from "./components/Contact/Contact";
 import AdminProfile from "./components/AdminDashboard/AdminProfile";
 import AddStudent from "./components/AddStudent/AddStudent";
@@ -17,15 +16,16 @@ import Subjects from "./components/AddSubject/Subjects";
 import Show from "./components/AssignSubjects/Show";
 import MarkAssignment from "./components/MarkInternals/MarkAssignment";
 import MarkExams from "./components/MarkInternals/MarkExams";
-import Report from "./components/GenerateReport/Report";
+import MarkAttendance from "./components/Attendance/MarkAttendance";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MarkInternals from "./components/MarkInternals/MarkInternals";
 import EditExamMarks from "./components/MarkInternals/EditExamMarks";
 import EditAssignmentMarks from "./components/MarkInternals/EditAssignmentMarks";
-import ViewMarks from "./components/MarkInternals/ViewMarks";
 import ViewAssignment from "./components/MarkInternals/ViewAssignment";
 import AddExam from "./components/MarkInternals/AddExam";
+import Report from "./components/FinalReport/Report";
 import AddAssignment from "./components/MarkInternals/AddAssignment";
+import ShowAttendance from "./components/Attendance/ShowAttendance";
 
 function App() {
   return (
@@ -62,6 +62,11 @@ function App() {
               <Route exact="true" path="/show" element={<Show />} />
               <Route
                 exact="true"
+                path="/showAttendance"
+                element={<ShowAttendance />}
+              />
+              <Route
+                exact="true"
                 path="/assignSubject/:email"
                 element={<AssignSubject />}
               />
@@ -69,6 +74,11 @@ function App() {
                 exact="true"
                 path="/editSubject/:subjectCode"
                 element={<EditSubject />}
+              />
+              <Route
+                exact="true"
+                path="/markAttendance/:email"
+                element={<MarkAttendance />}
               />
               <Route
                 exact="true"
@@ -90,12 +100,7 @@ function App() {
                 path="/editAssignments/:subjectCode"
                 element={<EditAssignmentMarks />}
               />
-              <Route exact="true" path="/report" element={<Report />} />
-              <Route
-                exact="true"
-                path="/viewAssignment/:subjectCode"
-                element={<ViewAssignment />}
-              />
+
               <Route
                 exact="true"
                 path="/addAssignment/:subjectCode"
@@ -103,12 +108,13 @@ function App() {
               />
               <Route
                 exact="true"
-                path="/viewExams/:subjectCode"
-                element={<ViewMarks />}
+                path="/viewAssignment/:subjectCode"
+                element={<ViewAssignment />}
               />
+              <Route exact="true" path="/report" element={<Report />} />
               <Route
                 exact="true"
-                path="/addExams/:subjectCode"
+                path="/addExams/:email"
                 element={<AddExam />}
               />
             </Routes>

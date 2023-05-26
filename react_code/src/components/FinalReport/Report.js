@@ -1,7 +1,7 @@
 import AdminDash from "../AdminDashboard/AdminDash";
 import styled from "styled-components";
 
-function AddRemark() {
+function Report() {
   return (
     <div>
       <AdminDash />
@@ -16,5 +16,4 @@ const Header = styled.div`
   left: 30%;
   top: 20%;
 `;
-
-export default AddRemark;
+export default Report;
