@@ -1,0 +1,10 @@
+Project name
+Authentication Using react
+Project ID 
+authentication-using-react
+Project number 
+256435110171
+Default GCP resource location 
+Not yet selected
+Web API Key
+AIzaSyDjOhZpRlC1hinIKir9Z0vAN0BbfPJkC7E
